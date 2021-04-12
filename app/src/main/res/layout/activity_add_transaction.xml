@@ -13,11 +13,20 @@
 
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timePicker"
+        android:onClick="showTimePickerDialog"
+        android:layout_below="@+id/lblAddTransaction"
+        android:text="@string/timePickerSelection"
+        />
+
     <EditText
         android:id="@+id/inputTransactionName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lblAddTransaction"
+        android:layout_below="@id/timePicker"
         android:hint="@string/transactionName"
         android:layout_margin="15dp"
         />

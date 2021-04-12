@@ -14,7 +14,6 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatNavigationDrawerActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
