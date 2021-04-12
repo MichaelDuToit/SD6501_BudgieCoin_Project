@@ -103,17 +103,12 @@ public class AppCompatNavigationDrawerActivity extends AppCompatActivity impleme
         return true;
     }
 
+    // If the Navigation Drawer is open on back btn press, close navigation drawer.
     @Override
     public void onBackPressed() {
         drawer = (DrawerLayout) findViewById(R.id.drawerLayoutMain);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                finishAffinity();
-            } else {
-                super.onBackPressed();
-            }
         }
     }
 }
