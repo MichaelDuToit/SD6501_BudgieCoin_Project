@@ -74,27 +74,22 @@ public class AppCompatNavigationDrawerActivity extends AppCompatActivity impleme
         int id = item.getItemId();
         switch (item.getItemId()){
             case R.id.nav_home:
-                Log.i("Drawer", "Home Case");
                 intent = new Intent(this, MainActivity.class);
                 break;
             case R.id.nav_balance:
-                Log.i("Drawer", "Account Balances Case");
                 intent = new Intent(this, AccountBalancesActivity.class);
                 break;
             case R.id.nav_transactions:
-                Log.i("Drawer", "View Transactions Case");
                 intent = new Intent(this, ViewTransactionsActivity.class);
                 break;
             case R.id.nav_add_transaction:
-                Log.i("Drawer", "Add Transaction Case");
                 intent = new Intent(this, AddTransactionActivity.class);
                 break;
             case R.id.nav_settings:
-                Log.i("Drawer", "Settings Case");
                 intent = new Intent(this, SettingsActivity.class);
                 break;
             case R.id.nav_logout:
-                Log.i("Drawer", "Logout Case");
+                intent = new Intent(this, LoginActivity.class);
                 break;
             default:
         }

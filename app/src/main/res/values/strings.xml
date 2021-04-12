@@ -13,6 +13,7 @@
     <string name="ViewTransactions">View Transactions</string>
     <string name="Settings">Settings</string>
     <string name="Logout">Logout</string>
+    <string name="Login">Login</string>
 
     <!-- Hint Strings -->
     <string name="transactionName">Transaction Name</string>

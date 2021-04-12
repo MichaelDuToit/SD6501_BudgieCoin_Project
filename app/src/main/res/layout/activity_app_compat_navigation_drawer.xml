@@ -8,26 +8,22 @@
     android:layout_height="match_parent"
     tools:context=".AppCompatNavigationDrawerActivity"
     >
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-            <include
-                layout="@layout/app_bar"
-                android:id="@+id/appBar"
-                />
+        <include
+            layout="@layout/app_bar"
+            android:id="@+id/appBar"
+            />
 
-            <include
-                layout="@layout/content_container"
-                android:id="@+id/content_frame"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/appBar"
-                android:layout_marginTop="50dp"
-                />
+        <include
+            layout="@layout/content_container"
+            android:id="@+id/content_frame"
+            />
 
-    </RelativeLayout>
+    </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_height="match_parent"
