@@ -12,29 +12,40 @@
         android:text="@string/addTransactionLbl"
 
         />
+    <EditText
+        android:id="@+id/inputTransactionName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblAddTransaction"
+        android:hint="@string/transactionName"
+        android:layout_margin="15dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePicker"
+        android:onClick="showTimePickerDialog"
+        android:layout_below="@+id/inputTransactionName"
+        android:text="@string/datePickerSelection"
+        android:layout_margin="15dp"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/timePicker"
         android:onClick="showTimePickerDialog"
-        android:layout_below="@+id/lblAddTransaction"
+        android:layout_below="@+id/inputTransactionName"
+        android:layout_toRightOf="@id/datePicker"
         android:text="@string/timePickerSelection"
-        />
-
-    <EditText
-        android:id="@+id/inputTransactionName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/timePicker"
-        android:hint="@string/transactionName"
         android:layout_margin="15dp"
         />
+
     <EditText
         android:id="@+id/inputTransactionValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputTransactionName"
+        android:layout_below="@+id/timePicker"
         android:layout_margin="15dp"
         android:layout_marginBottom="30dp"
         android:inputType="numberDecimal"
