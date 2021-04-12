@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "SD6501_BudgieCoin_Project"

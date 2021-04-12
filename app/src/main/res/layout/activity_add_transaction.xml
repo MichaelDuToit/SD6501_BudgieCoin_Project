@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="match_parent" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <include layout="@layout/app_bar" android:id="@+id/appBar" />
+    <TextView
+        android:layout_below="@id/appBar"
+        android:id="@+id/lblAddTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_margin="15dp"
+        android:text="@string/addTransactionLbl"
+        />
+    <EditText
+        android:id="@+id/inputTransactionName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblAddTransaction"
+        android:hint="@string/transactionName"
+        android:layout_margin="15dp"
+        />
+    <EditText
+        android:id="@+id/inputTransactionValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputTransactionName"
+        android:layout_margin="15dp"
+        android:layout_marginBottom="30dp"
+        android:inputType="numberDecimal"
+        android:hint="@string/valueFloat"
+        />
+
+    <EditText
+        android:id="@+id/inputTransactionNote"
+        android:layout_width="match_parent"
+        android:layout_below="@id/inputTransactionValue"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:inputType="textMultiLine"
+        android:hint="@string/note"
+        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inputTransactionNote"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="25dp"
+            >
+            <Button
+                android:id="@+id/btnSaveTransaction"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/btnSave"
+                android:onClick="saveTransaction"
+                android:layout_gravity="left"
+                />
+            <Button
+                android:id="@+id/btnCancelTransaction"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/btnCancel"
+                android:onClick="returnHome"
+                android:layout_gravity="right"
+                />
+        </LinearLayout>
+
+
+</RelativeLayout>

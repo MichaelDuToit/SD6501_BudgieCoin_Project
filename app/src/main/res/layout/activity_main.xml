@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayoutMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="HardcodedText"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="start"
+        >
+        <include layout="@layout/app_bar" android:id="@+id/appBar" />
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="15dp"
+    tools:context=".MainActivity">
+
+            <Button
+                android:id="@+id/btnAddTransaction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/addTransactionLbl"
+                android:onClick="changeToTransaction"
+                android:background="@color/budgieAqua"
+                android:textColor="@color/budgieGrey"
+                />
+
+            <Button
+                android:id="@+id/btnViewTransactions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnAddTransaction"
+                android:layout_margin="10dp"
+                android:text="@string/ViewTransactions"
+                android:onClick="changeToViewTransactions"
+                android:background="@color/budgieAqua"
+                android:textColor="@color/budgieGrey"
+                />
+
+            <Button
+                android:id="@+id/btnViewAccounts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnViewTransactions"
+                android:text="@string/ViewAccountBalances"
+                android:layout_margin="10dp"
+                android:onClick="changeToAccountsView"
+                android:background="@color/budgieAqua"
+                android:textColor="@color/budgieGrey"
+                />
+        </RelativeLayout>
+<!--
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation"
+        />
+</androidx.drawerlayout.widget.DrawerLayout>
+-->

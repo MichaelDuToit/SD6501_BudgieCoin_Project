@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/appBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.SD6501_BudgieCoin_Project"
+    android:background="@color/budgiePurple"
+    app:titleTextColor="@color/budgieYellow"
+    app:popupTheme="@style/Theme.SD6501_BudgieCoin_Project"
+    app:title="@string/app_name"
+    tools:showIn="@layout/activity_app_compat_navigation_drawer"
+    >
+
+</androidx.appcompat.widget.Toolbar>
