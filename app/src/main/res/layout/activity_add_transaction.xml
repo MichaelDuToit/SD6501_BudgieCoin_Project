@@ -10,7 +10,9 @@
         android:layout_marginBottom="10dp"
         android:layout_margin="15dp"
         android:text="@string/addTransactionLbl"
+
         />
+
     <EditText
         android:id="@+id/inputTransactionName"
         android:layout_width="match_parent"

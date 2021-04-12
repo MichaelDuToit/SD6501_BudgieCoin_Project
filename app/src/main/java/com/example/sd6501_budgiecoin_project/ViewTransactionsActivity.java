@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity {
 
     @Override
@@ -30,11 +32,12 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         View activityContentView = inflater.inflate(R.layout.activity_view_transactions, null, false);
         drawer.addView(activityContentView, 0);
         navView.setCheckedItem(R.id.nav_transactions);
+
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.appBar) {
             return true;
         }
         return super.onOptionsItemSelected(item);

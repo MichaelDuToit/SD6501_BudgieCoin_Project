@@ -17,9 +17,6 @@ public class MainActivity extends AppCompatNavigationDrawerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // This is for attempting to extend the class rom AppCompatNavigationDrawerActivity
-
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View activityContentView = inflater.inflate(R.layout.activity_main, null, false);
@@ -30,8 +27,7 @@ public class MainActivity extends AppCompatNavigationDrawerActivity {
     // For extending AppCompatNavigationDrawerActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.appBar) {
+        if (item.getItemId() == R.id.appBar) {
             return true;
         }
         return super.onOptionsItemSelected(item);
