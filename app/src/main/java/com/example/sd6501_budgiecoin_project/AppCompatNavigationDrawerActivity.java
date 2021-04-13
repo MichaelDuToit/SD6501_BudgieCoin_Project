@@ -102,6 +102,8 @@ public class AppCompatNavigationDrawerActivity extends AppCompatActivity impleme
         drawer = (DrawerLayout) findViewById(R.id.drawerLayoutMain);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 }

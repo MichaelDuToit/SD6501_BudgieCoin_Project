@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatNavigationDrawerActivity {
         startActivity(new Intent(this, ViewTransactionsActivity.class));
     }
     public void changeToAccountsView(View view){
-        startActivity(new Intent(this, ViewTransactionsActivity.class));
+        startActivity(new Intent(this, AccountBalancesActivity.class));
     }
 }
 
