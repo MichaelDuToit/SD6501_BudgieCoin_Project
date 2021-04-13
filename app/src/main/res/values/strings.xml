@@ -18,6 +18,9 @@
     <string name="Logout">Logout</string>
     <string name="Login">Login</string>
 
+    <!-- Login Messages -->
+    <string name="loginPinIncorrect">Incorrect Pin Number!</string>
+    <string name="loginUsernameIncorrect">Incorrect Username!</string>
     <!-- Hint Strings -->
     <string name="transactionName">Transaction Name</string>
     <string name="valueFloat">0.0</string>

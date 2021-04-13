@@ -16,6 +16,7 @@
         android:layout_marginBottom="30dp"
         />
     <EditText
+        android:id="@+id/loginUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username"
@@ -24,6 +25,7 @@
 
         />
     <EditText
+        android:id="@+id/loginPin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
@@ -31,7 +33,14 @@
         android:inputType="numberPassword"
         />
 
+    <TextView
+        android:id="@+id/loginError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
     <Button
+        android:id="@+id/loginBtn"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="@string/Login"
