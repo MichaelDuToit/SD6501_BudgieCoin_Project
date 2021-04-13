@@ -13,4 +13,6 @@
     <color name="budgieYellow">#F7F06D</color>
     <color name="budgieAqua">#8AE1FC</color>
     <color name="budgieBlue">#3066BE</color>
+
+    <color name="red">#FF0000</color>
 </resources>

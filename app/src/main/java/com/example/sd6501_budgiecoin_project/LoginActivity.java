@@ -36,6 +36,5 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             errorMsg.setText(R.string.loginUsernameIncorrect);
         }
-
     }
 }
