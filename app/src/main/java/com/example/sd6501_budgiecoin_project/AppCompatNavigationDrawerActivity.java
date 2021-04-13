@@ -69,9 +69,7 @@ public class AppCompatNavigationDrawerActivity extends AppCompatActivity impleme
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.i("Drawer", "Entered onNavigationItem");
         Intent intent = null;
-        int id = item.getItemId();
         switch (item.getItemId()){
             case R.id.nav_home:
                 intent = new Intent(this, MainActivity.class);

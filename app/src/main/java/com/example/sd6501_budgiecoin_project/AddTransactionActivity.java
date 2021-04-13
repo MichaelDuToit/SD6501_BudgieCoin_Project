@@ -13,17 +13,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class AddTransactionActivity extends AppCompatActivity {
 
     public Toolbar actionBar;
-    public Button datePicker;
-    public Button timePicker;
+    public Button datePicker, timePicker;
+    public EditText transactionName, transactionValue, transactionNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,18 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // Connect input attributes to input fields
+        datePicker = (Button)findViewById(R.id.datePicker);
+        timePicker = (Button)findViewById(R.id.timePicker);
+        transactionName = (EditText)findViewById(R.id.inputTransactionName);
+        transactionValue = (EditText)findViewById(R.id.inputTransactionValue);
+        transactionNote = (EditText)findViewById(R.id.inputTransactionNote);
+
         // Setup and format date and time picker buttons.
         Date currentDateTime = new Date();
         SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm");
-        datePicker = (Button)findViewById(R.id.datePicker);
-        timePicker = (Button)findViewById(R.id.timePicker);
+
         datePicker.setText(formatDate.format(currentDateTime));
         timePicker.setText(formatTime.format(currentDateTime));
     }

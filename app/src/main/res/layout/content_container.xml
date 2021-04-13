@@ -8,4 +8,5 @@
     android:orientation="vertical"
     tools:context=".AppCompatNavigationDrawerActivity"
     tools:showIn="@layout/activity_app_compat_navigation_drawer"
+    android:paddingTop="?attr/actionBarSize"
 />

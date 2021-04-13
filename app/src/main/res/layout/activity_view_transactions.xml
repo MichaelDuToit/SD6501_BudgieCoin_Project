@@ -4,16 +4,12 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context=".ViewTransactionsActivity"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="?attr/actionBarSize"
+    >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="View List of Transactions"
-        />
-
-    <ListView
-        android:id="@+id/listTransactions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         />
 </LinearLayout>

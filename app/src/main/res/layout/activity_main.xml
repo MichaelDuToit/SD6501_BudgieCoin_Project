@@ -3,40 +3,41 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:paddingTop="?attr/actionBarSize"
+    >
+    <Button
+        android:id="@+id/btnAddTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/addTransactionLbl"
+        android:onClick="changeToTransaction"
+        android:background="@color/budgieAqua"
+        android:textColor="@color/budgieGrey"
+        />
 
-            <Button
-                android:id="@+id/btnAddTransaction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/addTransactionLbl"
-                android:onClick="changeToTransaction"
-                android:background="@color/budgieAqua"
-                android:textColor="@color/budgieGrey"
-                />
+    <Button
+        android:id="@+id/btnViewTransactions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnAddTransaction"
+        android:layout_margin="10dp"
+        android:text="@string/ViewTransactions"
+        android:onClick="changeToViewTransactions"
+        android:background="@color/budgieAqua"
+        android:textColor="@color/budgieGrey"
+        />
 
-            <Button
-                android:id="@+id/btnViewTransactions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnAddTransaction"
-                android:layout_margin="10dp"
-                android:text="@string/ViewTransactions"
-                android:onClick="changeToViewTransactions"
-                android:background="@color/budgieAqua"
-                android:textColor="@color/budgieGrey"
-                />
-
-            <Button
-                android:id="@+id/btnViewAccounts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnViewTransactions"
-                android:text="@string/ViewAccountBalances"
-                android:layout_margin="10dp"
-                android:onClick="changeToAccountsView"
-                android:background="@color/budgieAqua"
-                android:textColor="@color/budgieGrey"
-                />
+    <Button
+        android:id="@+id/btnViewAccounts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnViewTransactions"
+        android:text="@string/ViewAccountBalances"
+        android:layout_margin="10dp"
+        android:onClick="changeToAccountsView"
+        android:background="@color/budgieAqua"
+        android:textColor="@color/budgieGrey"
+        />
 </RelativeLayout>
