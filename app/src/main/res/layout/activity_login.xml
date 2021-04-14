@@ -44,19 +44,24 @@
         />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/pinLoginBtn"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="@string/Login"
+        android:text="@string/pinLogin"
         android:layout_marginTop="15dp"
         android:background="@color/budgieAqua"
         android:textColor="@color/budgieBlue"
-        android:onClick="loginBtn"
+        android:onClick="pinLoginBtn"
         />
 
-
-
-
-
-
+    <Button
+        android:id="@+id/biometricLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/biometricLogin"
+        android:layout_marginTop="20dp"
+        android:background="@color/budgieAqua"
+        android:textColor="@color/budgieBlue"
+        android:onClick="biometricLoginBtn"
+        />
 </LinearLayout>

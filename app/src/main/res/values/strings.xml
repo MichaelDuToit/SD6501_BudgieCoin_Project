@@ -16,11 +16,15 @@
     <string name="ViewTransactions">View Transactions</string>
     <string name="Settings">Settings</string>
     <string name="Logout">Logout</string>
-    <string name="Login">Login</string>
+
+    <!-- Button Strings -->
+    <string name="pinLogin">Login with Pin</string>
+    <string name="biometricLogin">Login with Biometrics</string>
 
     <!-- Login Messages -->
     <string name="loginPinIncorrect">Incorrect Pin Number!</string>
     <string name="loginUsernameIncorrect">Incorrect Username!</string>
+
     <!-- Hint Strings -->
     <string name="transactionName">Transaction Name</string>
     <string name="valueFloat">0.0</string>
