@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class AppCompatNavigationDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public abstract class AppCompatNavigationDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public DrawerLayout drawer;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     public Toolbar toolbar;
