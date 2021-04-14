@@ -19,7 +19,7 @@
         android:id="@+id/loginUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="@string/username"
         android:layout_marginBottom="20dp"
         android:inputType="text"
 
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:hint="PIN"
+        android:hint="@string/pin"
         android:inputType="numberPassword"
         />
 
@@ -64,4 +64,5 @@
         android:textColor="@color/budgieBlue"
         android:onClick="biometricLoginBtn"
         />
+
 </LinearLayout>

@@ -22,6 +22,8 @@
     <string name="biometricLogin">Login with Biometrics</string>
 
     <!-- Login Messages -->
+    <string name="username">Username</string>
+    <string name="pin">PIN</string>
     <string name="loginPinIncorrect">Incorrect Pin Number!</string>
     <string name="loginUsernameIncorrect">Incorrect Username!</string>
 
