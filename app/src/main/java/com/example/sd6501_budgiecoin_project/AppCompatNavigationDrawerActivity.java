@@ -43,7 +43,6 @@ public abstract class AppCompatNavigationDrawerActivity extends AppCompatActivit
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navView = (NavigationView)findViewById(R.id.navView);
         navView.setNavigationItemSelectedListener(this);
-
     }
 
     @Override
@@ -96,7 +95,7 @@ public abstract class AppCompatNavigationDrawerActivity extends AppCompatActivit
         return true;
     }
 
-    // If the Navigation Drawer is open on back btn press, close navigation drawer.
+    // If the Navigation Drawer is open on back button press then the close navigation drawer.
     @Override
     public void onBackPressed() {
         drawer = (DrawerLayout) findViewById(R.id.drawerLayoutMain);

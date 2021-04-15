@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         pinInput = findViewById(R.id.loginPin);
         errorMsg = findViewById(R.id.loginError);
 
-        // Configure Biometric Login Prompts and methods
+        // Configure the Biometric Login Prompts and methods
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(LoginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
             // Override onAuthenticationError method
