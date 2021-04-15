@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -32,6 +33,9 @@ public class AddTransactionActivity extends AppCompatActivity {
     protected DatePickerDialog datePickerDialog;
     protected SimpleDateFormat formatDate, formatTime;
 
+    public Calendar transactionDate;
+    public int transactionYear, transactionMonth, transactionDay, transactionHour, transactionMinute;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,27 +55,46 @@ public class AddTransactionActivity extends AppCompatActivity {
 
         // Setup and format date and time picker buttons.
         // By default the transaction is given the current date and time.
-        transactionDateObj = new Date();
         formatDate = new SimpleDateFormat("dd/MM/yyyy");
         formatTime = new SimpleDateFormat("HH:mm");
-        datePickerBtn.setText(formatDate.format(transactionDateObj));
-        timePickerBtn.setText(formatTime.format(transactionDateObj));
+
+        transactionDate = Calendar.getInstance();
+        transactionYear = transactionDate.get(Calendar.YEAR);
+        transactionMonth = transactionDate.get(Calendar.MONTH);
+        transactionDay = transactionDate.get(Calendar.DAY_OF_MONTH);
+        transactionHour = transactionDate.get(Calendar.HOUR_OF_DAY);
+        transactionMinute = transactionDate.get(Calendar.MINUTE);
+
+        datePickerBtn.setText(formatDate.format(transactionDate.getTime()));
+        timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
+
     }
 
     public void showDatePickerDialog(View v){
-
-        DialogFragment dialogFragment = new DatePickerFragment();
-        dialogFragment.show(getSupportFragmentManager(), "datePicker");
-
-        // Assignment 2 - Update datePicker button to show the new date on it
+        DatePickerDialog datePicker = new DatePickerDialog(this, dateSetCallback, transactionYear, transactionMonth, transactionDay);
+        datePicker.show();
     }
+
+    DatePickerDialog.OnDateSetListener dateSetCallback = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            transactionDate.set(year, month, dayOfMonth);
+            datePickerBtn.setText(formatDate.format(transactionDate.getTime()));
+        }
+    };
 
     public void showTimePickerDialog(View v){
-        /*
-            Time Picker DialogFragment Code
-         */
-        // Update timePicker button to show the new date on it
+        TimePickerDialog timePicker = new TimePickerDialog(this, timeSetCallback, transactionHour, transactionMinute, true);
+        timePicker.show();
     }
+
+    TimePickerDialog.OnTimeSetListener timeSetCallback = new TimePickerDialog.OnTimeSetListener() {
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            transactionDate.set(transactionYear, transactionMonth, transactionDay, hourOfDay, minute);
+            timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
+        }
+    };
 
     public void saveTransaction(View v){
         try {
