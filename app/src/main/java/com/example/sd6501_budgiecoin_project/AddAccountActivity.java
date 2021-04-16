@@ -21,6 +21,7 @@ public class AddAccountActivity extends AppCompatActivity {
         actionBar = (Toolbar)findViewById(R.id.appBar);
         setSupportActionBar(actionBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.addAccountLbl);
     }
 
     public void createAccount(View v){

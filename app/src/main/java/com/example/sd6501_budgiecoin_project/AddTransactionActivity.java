@@ -44,6 +44,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         actionBar = (Toolbar)findViewById(R.id.appBar);
         setSupportActionBar(actionBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.addTransactionLbl);
 
         // Connect input attributes to layout fields
         datePickerBtn = (Button)findViewById(R.id.datePicker);
@@ -84,7 +85,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     // Method to call the TimePickerDialog
     public void showTimePickerDialog(View v){
-        TimePickerDialog timePicker = new TimePickerDialog(this, R.style.CustomDialogTheme, timeSetCallback, transactionHour, transactionMinute, true);
+        TimePickerDialog timePicker = new TimePickerDialog(this, timeSetCallback, transactionHour, transactionMinute, true);
         timePicker.show();
     }
 

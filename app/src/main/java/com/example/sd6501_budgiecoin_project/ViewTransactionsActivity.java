@@ -32,6 +32,7 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         View activityContentView = inflater.inflate(R.layout.activity_view_transactions, null, false);
         drawer.addView(activityContentView, 0);
         navView.setCheckedItem(R.id.nav_transactions);
+        getSupportActionBar().setTitle(R.string.transactions);
     }
 
     @Override

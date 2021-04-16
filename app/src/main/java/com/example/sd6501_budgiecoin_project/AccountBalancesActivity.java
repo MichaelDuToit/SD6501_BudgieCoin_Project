@@ -27,6 +27,7 @@ public class AccountBalancesActivity extends AppCompatNavigationDrawerActivity {
         View activityContentView = inflater.inflate(R.layout.activity_account_balances, null, false);
         drawer.addView(activityContentView, 0);
         navView.setCheckedItem(R.id.nav_balance);
+        getSupportActionBar().setTitle(R.string.accounts);
     }
 
     @Override
