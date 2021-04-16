@@ -88,6 +88,9 @@ public abstract class AppCompatNavigationDrawerActivity extends AppCompatActivit
             case R.id.nav_logout:
                 intent = new Intent(this, LoginActivity.class);
                 break;
+            case R.id.nav_add_account:
+                intent = new Intent(this, AddAccountActivity.class);
+                break;
             default:
         }
         startActivity(intent);

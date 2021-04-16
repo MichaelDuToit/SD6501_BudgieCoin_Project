@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText userInput, pinInput;
     TextView errorMsg;
-    String user = "admin", pin = "4321";
+    User user = new User("admin", "4321");
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo biometricPromptInfo;
@@ -82,8 +82,8 @@ public class LoginActivity extends AppCompatActivity {
     // If the user attempts to login using username and password, check their details
     // and authenticate them.
     public void pinLoginAuthentication(){
-        if (userInput.getText().toString().equals(user)) {
-            if (pinInput.getText().toString().equals(pin)) {
+        if (userInput.getText().toString().equals(user.getUsername())) {
+            if (pinInput.getText().toString().equals(user.getPinNumber())) {
                 // If both the username and password are correct, call the goToMainActivity method.
                 goToMainActivity();
             } else {

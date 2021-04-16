@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">BudgieCoin</string>
     <string name="addTransactionLbl">Add Transaction</string>
+    <string name="addAccountLbl">Add an Account</string>
     <string name="btnSave">Save</string>
     <string name="btnCancel">Cancel</string>
     <string name="lbl_open">Open</string>
@@ -31,6 +32,7 @@
     <string name="transactionName">Transaction Name</string>
     <string name="valueFloat">0.0</string>
     <string name="note">Note</string>
+    <string name="accountName">Account Name</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

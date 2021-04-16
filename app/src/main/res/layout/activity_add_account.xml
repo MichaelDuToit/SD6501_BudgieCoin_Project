@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/app_bar" android:id="@+id/appBar" />
+    <EditText
+        android:id="@+id/accountName"
+        android:layout_below="@id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:hint="@string/accountName"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountName"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="25dp"
+        >
+        <Button
+            android:id="@+id/saveAccountBtn"
+            android:layout_height="wrap_content"
+            android:text="@string/btnSave"
+            android:layout_below="@id/accountName"
+            android:layout_margin="15dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="left"
+            android:onClick="createAccount"
+            />
+
+        <Button
+            android:id="@+id/cancelAccountBtn"
+            android:layout_height="wrap_content"
+            android:text="@string/btnCancel"
+            android:layout_below="@id/accountName"
+            android:layout_toRightOf="@id/saveAccountBtn"
+            android:layout_margin="15dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="right"
+            android:onClick="cancelBtn"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
