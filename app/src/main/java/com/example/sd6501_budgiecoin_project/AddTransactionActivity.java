@@ -101,7 +101,9 @@ public class AddTransactionActivity extends AppCompatActivity {
     // Method to manage when the Save Btn is clicked to save a Transaction.
     public void saveTransaction(View v){
         try {
+            // This is temporary just to demonstrate some interaction
             Toast.makeText(this, "Transaction Created", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ViewTransactionsActivity.class));
             // Assignment 2 - store transaction values to Transaction obj which is then added to DB.
         }
         catch(Exception e) {
@@ -114,5 +116,10 @@ public class AddTransactionActivity extends AppCompatActivity {
         Toast.makeText(this, "Transaction entry has been cancelled", Toast.LENGTH_LONG).show();
         Intent home = new Intent(this, MainActivity.class);
         startActivity(home);
+    }
+
+    // Method to manage when the Account Selection Button is clicked
+    public void selectAccountBtn(View v){
+
     }
 }

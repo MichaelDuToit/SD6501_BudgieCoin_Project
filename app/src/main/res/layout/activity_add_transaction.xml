@@ -20,6 +20,7 @@
         android:hint="@string/transactionName"
         android:layout_margin="15dp"
         />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         android:layout_below="@+id/inputTransactionName"
         android:text="@string/datePickerSelection"
         android:layout_margin="15dp"
+        android:paddingHorizontal="15dp"
         android:background="@color/budgiePurple"
         android:textColor="@color/budgieYellow"
         />
@@ -41,15 +43,28 @@
         android:layout_toRightOf="@id/datePicker"
         android:text="@string/timePickerSelection"
         android:layout_margin="15dp"
+        android:paddingHorizontal="15dp"
         android:background="@color/budgiePurple"
         android:textColor="@color/budgieYellow"
+        />
+
+    <Button
+        android:id="@+id/accountSelectionBtn"
+        android:text="@string/account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timePicker"
+        android:layout_margin="15dp"
+        android:background="@color/budgiePurple"
+        android:textColor="@color/budgieYellow"
+        android:onClick="selectAccountBtn"
         />
 
     <EditText
         android:id="@+id/inputTransactionValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/timePicker"
+        android:layout_below="@id/accountSelectionBtn"
         android:layout_margin="15dp"
         android:layout_marginBottom="30dp"
         android:inputType="numberDecimal"
