@@ -24,6 +24,8 @@
     <!-- Button Strings -->
     <string name="pinLogin">Login with Pin</string>
     <string name="biometricLogin">Login with Biometrics</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
 
     <!-- Login Messages -->
     <string name="username">Username</string>

@@ -24,6 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
         actionBar = (Toolbar)findViewById(R.id.appBar);
         setSupportActionBar(actionBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.Settings);
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {

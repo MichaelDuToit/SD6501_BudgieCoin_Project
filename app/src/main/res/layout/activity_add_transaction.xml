@@ -2,21 +2,35 @@
 <RelativeLayout android:layout_height="match_parent" android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <include layout="@layout/app_bar" android:id="@+id/appBar" />
-    <TextView
+    <RadioGroup
         android:layout_below="@id/appBar"
-        android:id="@+id/lblAddTransaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:id="@+id/transactionType"
         android:layout_margin="15dp"
-        android:text="@string/addTransactionLbl"
-
-        />
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <RadioButton
+            android:id="@+id/radioBtnIncome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/income"
+            />
+        <RadioButton
+            android:id="@+id/radioBtnExpense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/expense"
+            />
+    </RadioGroup>
     <EditText
         android:id="@+id/inputTransactionName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lblAddTransaction"
+        android:layout_below="@id/transactionType"
         android:hint="@string/transactionName"
         android:layout_margin="15dp"
         />
