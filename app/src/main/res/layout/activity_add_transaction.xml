@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/income"
+            android:buttonTint="@color/budgieAqua"
             />
         <RadioButton
             android:id="@+id/radioBtnExpense"
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/expense"
+            android:buttonTint="@color/red"
             />
     </RadioGroup>
     <EditText
