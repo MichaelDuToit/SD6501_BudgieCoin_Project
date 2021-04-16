@@ -30,6 +30,8 @@
             android:layout_weight="1"
             android:layout_gravity="left"
             android:onClick="createAccount"
+            android:background="@color/budgiePurple"
+            android:textColor="@color/budgieYellow"
             />
 
         <Button
@@ -43,6 +45,8 @@
             android:layout_weight="1"
             android:layout_gravity="right"
             android:onClick="cancelBtn"
+            android:background="@color/budgiePurple"
+            android:textColor="@color/budgieYellow"
             />
     </LinearLayout>
 

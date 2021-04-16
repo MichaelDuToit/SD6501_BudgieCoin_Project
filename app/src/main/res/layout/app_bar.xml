@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/Theme.SD6501_BudgieCoin_Project"
-    android:background="@color/budgiePurple"
+    android:background="@color/budgieBlue"
     app:titleTextColor="@color/budgieYellow"
     app:popupTheme="@style/Theme.SD6501_BudgieCoin_Project"
     app:title="@string/app_name"

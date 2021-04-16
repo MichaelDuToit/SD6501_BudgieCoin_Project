@@ -13,8 +13,8 @@
         android:layout_margin="10dp"
         android:text="@string/addTransactionLbl"
         android:onClick="changeToTransaction"
-        android:background="@color/budgieAqua"
-        android:textColor="@color/budgieGrey"
+        android:background="@color/budgiePurple"
+        android:textColor="@color/budgieYellow"
         />
 
     <Button
@@ -25,8 +25,8 @@
         android:layout_margin="10dp"
         android:text="@string/ViewTransactions"
         android:onClick="changeToViewTransactions"
-        android:background="@color/budgieAqua"
-        android:textColor="@color/budgieGrey"
+        android:background="@color/budgiePurple"
+        android:textColor="@color/budgieYellow"
         />
 
     <Button
@@ -37,7 +37,7 @@
         android:text="@string/ViewAccountBalances"
         android:layout_margin="10dp"
         android:onClick="changeToAccountsView"
-        android:background="@color/budgieAqua"
-        android:textColor="@color/budgieGrey"
+        android:background="@color/budgiePurple"
+        android:textColor="@color/budgieYellow"
         />
 </RelativeLayout>

@@ -84,7 +84,7 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     // Method to call the TimePickerDialog
     public void showTimePickerDialog(View v){
-        TimePickerDialog timePicker = new TimePickerDialog(this, timeSetCallback, transactionHour, transactionMinute, true);
+        TimePickerDialog timePicker = new TimePickerDialog(this, R.style.CustomDialogTheme, timeSetCallback, transactionHour, transactionMinute, true);
         timePicker.show();
     }
 

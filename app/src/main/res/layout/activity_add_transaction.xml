@@ -28,6 +28,8 @@
         android:layout_below="@+id/inputTransactionName"
         android:text="@string/datePickerSelection"
         android:layout_margin="15dp"
+        android:background="@color/budgiePurple"
+        android:textColor="@color/budgieYellow"
         />
 
     <Button
@@ -39,6 +41,8 @@
         android:layout_toRightOf="@id/datePicker"
         android:text="@string/timePickerSelection"
         android:layout_margin="15dp"
+        android:background="@color/budgiePurple"
+        android:textColor="@color/budgieYellow"
         />
 
     <EditText
@@ -77,6 +81,8 @@
                 android:text="@string/btnSave"
                 android:onClick="saveTransaction"
                 android:layout_gravity="left"
+                android:background="@color/budgiePurple"
+                android:textColor="@color/budgieYellow"
                 />
             <Button
                 android:id="@+id/btnCancelTransaction"
@@ -87,6 +93,8 @@
                 android:text="@string/btnCancel"
                 android:onClick="returnHome"
                 android:layout_gravity="right"
+                android:background="@color/budgiePurple"
+                android:textColor="@color/budgieYellow"
                 />
         </LinearLayout>
 
