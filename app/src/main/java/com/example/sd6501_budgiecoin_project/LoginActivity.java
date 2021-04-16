@@ -39,7 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         // Configure the Biometric Login Prompts and methods
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(LoginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
-            // Override onAuthenticationError method
+            // These three methods need to be overriden to implement the BiometricPrompt.
+            // Override the onAuthenticationError method
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                     goToMainActivity();
                 }
             }
-            // Override on onAuthenticationFailed method
+            // Override the on onAuthenticationFailed method
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
@@ -109,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         return super.onKeyUp(keyCode, event);
     }
 
-    // Override the onBackPressed method to close the application.
+    // Override the onBackPressed method to close the application if the back btn is pressed.
     @Override
     public void onBackPressed() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

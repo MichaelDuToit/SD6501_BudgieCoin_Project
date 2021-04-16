@@ -48,7 +48,7 @@ public class Transaction {
     public void setDate(Date date){this.date = date; }
     public Date getDate(){return date;}
 
-    // Methods manage transactions as Income (Positive) or Expenses (Negative)
+    // Methods that manage transactions as Income (Positive) or Expenses (Negative)
     public double Expense(double val){
         val = -val;
         return this.value = val;

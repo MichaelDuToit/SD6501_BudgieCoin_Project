@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatNavigationDrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Because this activity extends the NavigationDrawerActivity, we dynamically inflate the content into the holder.
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View activityContentView = inflater.inflate(R.layout.activity_main, null, false);
         drawer.addView(activityContentView, 0);
@@ -46,15 +47,18 @@ public class MainActivity extends AppCompatNavigationDrawerActivity {
             }
         }
     }
-
+    // If the Add Transaction Btn is clicked, change to the Add Transaction Activity
     public void changeToTransaction(View view){
         Intent intent = new Intent(this, AddTransactionActivity.class);
         startActivity(intent);
     }
 
+    // If the View Transactions Btn is clicked, change to the View Transaction Activity
     public void changeToViewTransactions(View view){
         startActivity(new Intent(this, ViewTransactionsActivity.class));
     }
+
+    // If the View Account Balances Btn is clicked, change to the Account Balances Activity.
     public void changeToAccountsView(View view){
         startActivity(new Intent(this, AccountBalancesActivity.class));
     }

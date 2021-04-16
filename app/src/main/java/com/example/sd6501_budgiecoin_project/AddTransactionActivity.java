@@ -46,7 +46,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.addTransactionLbl);
 
-        // Connect input attributes to layout fields
+        // Connect layout input attributes to layout fields
         datePickerBtn = (Button)findViewById(R.id.datePicker);
         timePickerBtn = (Button)findViewById(R.id.timePicker);
         transactionName = (EditText)findViewById(R.id.inputTransactionName);
@@ -120,6 +120,6 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     // Method to manage when the Account Selection Button is clicked
     public void selectAccountBtn(View v){
-
+        // Currently empty, will be further implemented alongside Assignment 2's database.
     }
 }

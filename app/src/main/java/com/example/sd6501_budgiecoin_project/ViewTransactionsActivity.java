@@ -28,6 +28,7 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Because this activity extends the NavigationDrawerActivity, we dynamically inflate the content into the holder.
         LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View activityContentView = inflater.inflate(R.layout.activity_view_transactions, null, false);
         drawer.addView(activityContentView, 0);
