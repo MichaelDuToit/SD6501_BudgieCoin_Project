@@ -73,7 +73,6 @@
         android:layout_margin="15dp"
         android:background="@color/budgiePurple"
         android:textColor="@color/budgieYellow"
-        android:onClick="selectAccountBtn"
         />
 
     <EditText

@@ -13,12 +13,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class AccountBalancesActivity extends AppCompatNavigationDrawerActivity {
+
+    ListView accountsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,24 @@ public class AccountBalancesActivity extends AppCompatNavigationDrawerActivity {
         drawer.addView(activityContentView, 0);
         navView.setCheckedItem(R.id.nav_balance);
         getSupportActionBar().setTitle(R.string.accounts);
+
+        accountsList = findViewById(R.id.accountsList);
+        DBHandler db = new DBHandler(this);
+        ArrayList<Account> accounts = db.getAllAccounts();
+        AccountsBalancesAdapter balancesAdapter = new AccountsBalancesAdapter(this, 0, accounts);
+        accountsList.setAdapter(balancesAdapter);
+
+        accountsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), ViewAccountActivity.class);
+                int selectedAccountID = balancesAdapter.getItem(position).getId();
+                Bundle bundle = new Bundle();
+                bundle.putInt("AccountID", selectedAccountID);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

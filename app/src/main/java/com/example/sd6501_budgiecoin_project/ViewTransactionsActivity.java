@@ -16,12 +16,19 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity {
 
@@ -34,6 +41,7 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         drawer.addView(activityContentView, 0);
         navView.setCheckedItem(R.id.nav_transactions);
         getSupportActionBar().setTitle(R.string.transactions);
+
     }
 
     @Override

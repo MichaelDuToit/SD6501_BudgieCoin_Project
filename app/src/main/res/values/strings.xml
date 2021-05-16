@@ -7,6 +7,8 @@
     <string name="account">Account</string>
     <string name="btnSave">Save</string>
     <string name="btnCancel">Cancel</string>
+    <string name="btnUpdate">Update</string>
+    <string name="btnDelete">Delete</string>
     <string name="lbl_open">Open</string>
     <string name="lbl_close">Close</string>
     <string name="title_activity_settings">SettingsActivity</string>
@@ -38,6 +40,14 @@
     <string name="valueFloat">0.00</string>
     <string name="note">Note</string>
     <string name="accountName">Account Name</string>
+
+    <!-- Toast Messages -->
+    <string name="t_accountCreated">Account Created</string>
+    <string name="t_accountCanceled">Account Creation Cancelled</string>
+    <string name="t_accountError">Account Creation Error</string>
+    <string name="t_transactionCreated">Transaction Created</string>
+    <string name="t_transactionCanceled">Transaction Creation Cancelled</string>
+    <string name="t_transactionError">Transaction Creation Error</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

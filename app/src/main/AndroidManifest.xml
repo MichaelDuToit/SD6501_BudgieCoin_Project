@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".AddAccountActivity" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".ViewAccountActivity"
+            android:parentActivityName=".AccountBalancesActivity"
+            ></activity>
+        <activity
+            android:name=".AddAccountActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".AppCompatNavigationDrawerActivity" />
         <activity
             android:name=".SettingsActivity"
@@ -30,7 +35,7 @@
         <activity
             android:name=".AddTransactionActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -11,6 +11,9 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -20,15 +23,16 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 public class AddTransactionActivity extends AppCompatActivity {
 
     public Toolbar actionBar;
-    public Button datePickerBtn, timePickerBtn;
+    public Button datePickerBtn, timePickerBtn, accountSelectBtn;
     public EditText transactionName, transactionValue, transactionNote;
-    public Date transactionDateObj;
+    //public Date transactionDateObj;
     protected TimePickerDialog timePickerDialog;
     protected DatePickerDialog datePickerDialog;
     protected SimpleDateFormat formatDate, formatTime;
@@ -52,6 +56,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         transactionName = (EditText)findViewById(R.id.inputTransactionName);
         transactionValue = (EditText)findViewById(R.id.inputTransactionValue);
         transactionNote = (EditText)findViewById(R.id.inputTransactionNote);
+        accountSelectBtn = findViewById(R.id.accountSelectionBtn);
 
         // Setup and format date and time picker buttons.
         // By default the transaction is given the current date and time.
@@ -66,6 +71,27 @@ public class AddTransactionActivity extends AppCompatActivity {
         datePickerBtn.setText(formatDate.format(transactionDate.getTime()));
         timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
 
+        // Connect the Account Selection Btn to the Context Menu.
+        registerForContextMenu(accountSelectBtn);
+
+    }
+
+    // Create the Context Menu and populate it with the accounts in the DB.
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        DBHandler db = new DBHandler(this);
+        ArrayList<Account> accountList = db.getAllAccounts();
+        menu.setHeaderTitle(R.string.accounts);
+        for(Account acc : accountList){
+            menu.add(0, acc.getId(), 0, acc.getName());
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        Log.i("BlueCoin: ", item.getItemId() + " " + item.getTitle() );
+        return true;
     }
 
     // Method to call the DatePickerDialog
@@ -101,19 +127,29 @@ public class AddTransactionActivity extends AppCompatActivity {
     // Method to manage when the Save Btn is clicked to save a Transaction.
     public void saveTransaction(View v){
         try {
-            // This is temporary just to demonstrate some interaction
-            Toast.makeText(this, "Transaction Created", Toast.LENGTH_SHORT).show();
+            // Assignment 2 - store transaction values to Transaction obj which is then added to DB
+            Transaction tempTransaction = new Transaction(
+                    transactionName.getText().toString(),
+                    Double.parseDouble(transactionValue.getText().toString()),
+                    datePickerBtn.getText().toString(),
+                    timePickerBtn.getText().toString(),
+                    1,
+                    transactionNote.getText().toString()
+            );
+            DBHandler db = new DBHandler(this);
+            db.createTransaction(tempTransaction);
+
+            Toast.makeText(this, R.string.t_transactionCreated, Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ViewTransactionsActivity.class));
-            // Assignment 2 - store transaction values to Transaction obj which is then added to DB.
         }
         catch(Exception e) {
-            Toast.makeText(this, "Error Occurred. Please try again", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.t_transactionError, Toast.LENGTH_LONG).show();
         }
     }
 
     // Method to manage when the Cancel Btn is clicked to cancel a Transaction.
     public void returnHome(View v){
-        Toast.makeText(this, "Transaction entry has been cancelled", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.t_accountCanceled, Toast.LENGTH_LONG).show();
         Intent home = new Intent(this, MainActivity.class);
         startActivity(home);
     }
