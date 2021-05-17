@@ -26,11 +26,14 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity {
+
+    ListView lvAllTransactions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,13 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         drawer.addView(activityContentView, 0);
         navView.setCheckedItem(R.id.nav_transactions);
         getSupportActionBar().setTitle(R.string.transactions);
+
+        lvAllTransactions = findViewById(R.id.listAllTransactions);
+        DBHandler db = new DBHandler(this);
+        ArrayList<Transaction> transactions = db.getAllTransactions();
+        TransactionsAdapter transactionsAdapter = new TransactionsAdapter(this, 0, transactions);
+        lvAllTransactions.setAdapter(transactionsAdapter);
+
 
     }
 

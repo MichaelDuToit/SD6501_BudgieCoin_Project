@@ -64,22 +64,31 @@
         android:textColor="@color/budgieYellow"
         />
 
+    <Spinner
+        android:id="@+id/accountSelectionSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_below="@id/timePicker"
+
+        />
+<!--
     <Button
         android:id="@+id/accountSelectionBtn"
         android:text="@string/account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/timePicker"
+        android:layout_below="@id/accountSelectionSpinner"
         android:layout_margin="15dp"
         android:background="@color/budgiePurple"
         android:textColor="@color/budgieYellow"
         />
-
+-->
     <EditText
         android:id="@+id/inputTransactionValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/accountSelectionBtn"
+        android:layout_below="@id/accountSelectionSpinner"
         android:layout_margin="15dp"
         android:layout_marginBottom="30dp"
         android:inputType="numberDecimal"

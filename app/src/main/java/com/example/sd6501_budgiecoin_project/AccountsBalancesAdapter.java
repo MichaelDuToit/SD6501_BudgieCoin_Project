@@ -9,9 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 // https://stackoverflow.com/questions/15297840/populate-listview-from-arraylist-of-objects
 
@@ -27,7 +33,7 @@ public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
             this.account = acc;
             inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         } catch (Exception ex){
-
+            Log.e(String.valueOf(R.string.app_name), ex.toString());
         }
     }
 
@@ -47,7 +53,7 @@ public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
         public TextView accountName;
         public TextView accountBalance;
     }
-    
+
     public View getView(int position, View convertView, ViewGroup parent){
         View view = convertView;
         final ViewHolder holder;
@@ -61,9 +67,12 @@ public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
             } else {
                 holder = (ViewHolder)view.getTag();
             }
-
+            DBHandler db = new DBHandler(getContext());
             holder.accountName.setText(account.get(position).getName());
-            holder.accountBalance.setText(String.valueOf(account.get(position).getId()));
+            holder.accountBalance.setText(
+                    NumberFormat.getCurrencyInstance(new Locale("en", "NZ")).format(
+                    db.getAccountBalance(account.get(position).getId()))
+            );
 
         } catch (Exception ex){
 
@@ -71,5 +80,8 @@ public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
         return view;
     }
 
-
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return getView(position, convertView, parent);
+    }
 }

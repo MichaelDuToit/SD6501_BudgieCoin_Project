@@ -190,6 +190,18 @@ public class DBHandler  extends SQLiteOpenHelper {
         return allAccounts;
     }
 
+    public double getAccountBalance(int accountID){
+        SQLiteDatabase db = this.getReadableDatabase();
+        double sum = 0.0;
+        String query = "SELECT value FROM " + TABLE_TRANSACTIONS + " WHERE " + KEY_TRANS_ACC + " = " + accountID;
+        Cursor cursor = db.rawQuery(query, null);
+        while(cursor.moveToNext()){
+            sum += Double.valueOf(cursor.getString(cursor.getColumnIndex(KEY_TRANS_VALUE)));
+        }
+        cursor.close();
+        return sum;
+    }
+
     public void deleteAccount(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_ACCOUNTS, KEY_ACC_ID + " = ?", new String[]{String.valueOf(id)});

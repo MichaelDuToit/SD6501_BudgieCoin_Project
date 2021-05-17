@@ -10,34 +10,39 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddTransactionActivity extends AppCompatActivity {
+public class AddTransactionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public Toolbar actionBar;
-    public Button datePickerBtn, timePickerBtn, accountSelectBtn;
+    public Button datePickerBtn, timePickerBtn;
     public EditText transactionName, transactionValue, transactionNote;
-    //public Date transactionDateObj;
     protected TimePickerDialog timePickerDialog;
     protected DatePickerDialog datePickerDialog;
     protected SimpleDateFormat formatDate, formatTime;
     public Calendar transactionDate;
-    public int transactionYear, transactionMonth, transactionDay, transactionHour, transactionMinute;
+    public int transactionYear, transactionMonth, transactionDay, transactionHour, transactionMinute, selectedAccount;
+    public Spinner accountSelectionSpinner;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +61,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         transactionName = (EditText)findViewById(R.id.inputTransactionName);
         transactionValue = (EditText)findViewById(R.id.inputTransactionValue);
         transactionNote = (EditText)findViewById(R.id.inputTransactionNote);
-        accountSelectBtn = findViewById(R.id.accountSelectionBtn);
+        accountSelectionSpinner = findViewById(R.id.accountSelectionSpinner);
 
         // Setup and format date and time picker buttons.
         // By default the transaction is given the current date and time.
@@ -71,27 +76,13 @@ public class AddTransactionActivity extends AppCompatActivity {
         datePickerBtn.setText(formatDate.format(transactionDate.getTime()));
         timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
 
-        // Connect the Account Selection Btn to the Context Menu.
-        registerForContextMenu(accountSelectBtn);
-
-    }
-
-    // Create the Context Menu and populate it with the accounts in the DB.
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
         DBHandler db = new DBHandler(this);
-        ArrayList<Account> accountList = db.getAllAccounts();
-        menu.setHeaderTitle(R.string.accounts);
-        for(Account acc : accountList){
-            menu.add(0, acc.getId(), 0, acc.getName());
-        }
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        Log.i("BlueCoin: ", item.getItemId() + " " + item.getTitle() );
-        return true;
+        ArrayList<Account> allAccounts;
+        allAccounts = db.getAllAccounts();
+        // then create adapter, set adapter with spinner and allAccounts as source.
+        AccountsBalancesAdapter adapter = new AccountsBalancesAdapter(this, 0, allAccounts);
+        accountSelectionSpinner.setAdapter(adapter);
+        accountSelectionSpinner.setOnItemSelectedListener(this);
     }
 
     // Method to call the DatePickerDialog
@@ -133,7 +124,7 @@ public class AddTransactionActivity extends AppCompatActivity {
                     Double.parseDouble(transactionValue.getText().toString()),
                     datePickerBtn.getText().toString(),
                     timePickerBtn.getText().toString(),
-                    1,
+                    selectedAccount,
                     transactionNote.getText().toString()
             );
             DBHandler db = new DBHandler(this);
@@ -154,8 +145,15 @@ public class AddTransactionActivity extends AppCompatActivity {
         startActivity(home);
     }
 
-    // Method to manage when the Account Selection Button is clicked
-    public void selectAccountBtn(View v){
-        // Currently empty, will be further implemented alongside Assignment 2's database.
+    // Override the Spinner's onItemSelected method. When an item is picked, get the id of the account.
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Account account = (Account) parent.getItemAtPosition(position);
+        selectedAccount = account.getId();
+    }
+    // Override the Spinner's onNothingSelected.
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

@@ -25,6 +25,8 @@
             android:layout_below="@id/accountName"
             android:paddingHorizontal="25dp"
             android:onClick="updateAccount"
+            android:backgroundTint="@color/budgiePurple"
+            android:textColor="@color/budgieYellow"
             />
         <Button
             android:id="@+id/deleteBtn"
@@ -35,6 +37,8 @@
             android:layout_alignParentRight="true"
             android:paddingHorizontal="25dp"
             android:onClick="deleteAccount"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/budgieYellow"
             />
 
     </RelativeLayout>
