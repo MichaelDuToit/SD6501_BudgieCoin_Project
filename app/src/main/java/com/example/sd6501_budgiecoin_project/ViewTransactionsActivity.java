@@ -50,8 +50,6 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         ArrayList<Transaction> transactions = db.getAllTransactions();
         TransactionsAdapter transactionsAdapter = new TransactionsAdapter(this, 0, transactions);
         lvAllTransactions.setAdapter(transactionsAdapter);
-
-
     }
 
     @Override

@@ -42,6 +42,7 @@ public class ViewAccountActivity extends AppCompatActivity {
         DBHandler db = new DBHandler(this);
         Account account = db.getAccount(accountID);
 
+        // Set the name field to the account's name.
         etAccountName = findViewById(R.id.accountName);
         etAccountName.setText(account.getName());
     }

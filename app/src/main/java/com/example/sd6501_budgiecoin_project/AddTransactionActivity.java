@@ -37,8 +37,6 @@ public class AddTransactionActivity extends AppCompatActivity implements Adapter
     public Toolbar actionBar;
     public Button datePickerBtn, timePickerBtn;
     public EditText transactionName, transactionValue, transactionNote;
-    protected TimePickerDialog timePickerDialog;
-    protected DatePickerDialog datePickerDialog;
     protected SimpleDateFormat formatDate, formatTime;
     public Calendar transactionDate;
     public int transactionYear, transactionMonth, transactionDay, transactionHour, transactionMinute, selectedAccount;
