@@ -154,6 +154,19 @@ public class DBHandler  extends SQLiteOpenHelper {
         return update;
     }
 
+    public int updateTransaction(Transaction transaction){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_TRANS_NAME, transaction.getName());
+        contentValues.put(KEY_TRANS_ACC, String.valueOf(transaction.getAccount()));
+        contentValues.put(KEY_TRANS_VALUE, String.valueOf(transaction.getValue()));
+        contentValues.put(KEY_TRANS_DATE, transaction.getDate());
+        contentValues.put(KEY_TRANS_TIME, transaction.getTime());
+        contentValues.put(KEY_TRANS_NOTE, transaction.getNote());
+        int update = db.update(TABLE_TRANSACTIONS, contentValues, KEY_TRANS_ID + " = ?", new String[]{String.valueOf(transaction.getId())});
+        return update;
+    }
+
     public void createAccount(Account account){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -161,6 +174,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         long newRowId = db.insert(TABLE_ACCOUNTS, null, values);
         db.close();
     }
+
 
     public Account getAccount(int id){
         SQLiteDatabase db = this.getWritableDatabase();

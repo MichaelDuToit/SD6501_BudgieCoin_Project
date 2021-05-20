@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatNavigationDrawerActivity {
     }
     // If the Add Transaction Btn is clicked, change to the Add Transaction Activity
     public void changeToTransaction(View view){
-        Intent intent = new Intent(this, AddTransactionActivity.class);
+        Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
     }
 

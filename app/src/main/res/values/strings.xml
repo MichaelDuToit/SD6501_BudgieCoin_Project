@@ -28,6 +28,7 @@
     <string name="biometricLogin">Login with Biometrics</string>
     <string name="income">Income</string>
     <string name="expense">Expense</string>
+    <string name="transfer">Transfer</string>
 
     <!-- Login Messages -->
     <string name="username">Username</string>

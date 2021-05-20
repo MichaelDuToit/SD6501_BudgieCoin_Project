@@ -83,7 +83,7 @@ public abstract class AppCompatNavigationDrawerActivity extends AppCompatActivit
                 intent = new Intent(this, ViewTransactionsActivity.class);
                 break;
             case R.id.nav_add_transaction:
-                intent = new Intent(this, AddTransactionActivity.class);
+                intent = new Intent(this, TransactionActivity.class);
                 break;
             case R.id.nav_settings:
                 intent = new Intent(this, SettingsActivity.class);

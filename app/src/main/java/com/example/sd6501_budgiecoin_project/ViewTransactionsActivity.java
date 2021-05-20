@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -50,6 +51,19 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         ArrayList<Transaction> transactions = db.getAllTransactions();
         TransactionsAdapter transactionsAdapter = new TransactionsAdapter(this, 0, transactions);
         lvAllTransactions.setAdapter(transactionsAdapter);
+
+        lvAllTransactions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // TODO: This needs to be updated to the new fragment based activity.
+                Intent intent = new Intent(getApplicationContext(), TransactionActivity.class);
+                int selectedTransaction = transactionsAdapter.getItem(position).getId();
+                Bundle bundle = new Bundle();
+                bundle.putInt("TransactionID", selectedTransaction);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

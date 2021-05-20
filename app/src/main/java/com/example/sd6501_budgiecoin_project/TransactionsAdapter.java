@@ -71,10 +71,11 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
             holder.transactionName.setText(transactions.get(position).getName());
             holder.transactionValue.setText(
                     NumberFormat.getCurrencyInstance(new Locale("en", "NZ")).format(
-                            db.getAccountBalance(transactions.get(position).getId()))
+                            transactions.get(position).getValue()
+                    )
             );
             holder.transactionAccount.setText(
-                    db.getAccount(transactions.get(position).getId()).getName()
+                    db.getAccount(transactions.get(position).getAccount()).getName()
             );
 
         } catch (Exception ex){
