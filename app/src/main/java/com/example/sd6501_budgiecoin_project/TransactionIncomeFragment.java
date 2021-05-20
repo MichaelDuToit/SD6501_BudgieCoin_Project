@@ -27,7 +27,7 @@ public class TransactionIncomeFragment extends Fragment {
 
     public Button datePickerBtn, timePickerBtn, saveTransactionBtn, cancelBtn;
     public EditText transactionName, transactionValue, transactionNote;
-    protected SimpleDateFormat formatDate, formatTime;
+    protected SimpleDateFormat formatViewDate, formatStoreDate, formatTime;
     public Calendar transactionDate;
     public int transactionYear, transactionMonth, transactionDay, transactionHour, transactionMinute, selectedAccount;
     public Spinner accountSelectionSpinner;
@@ -49,7 +49,8 @@ public class TransactionIncomeFragment extends Fragment {
 
         // Setup and format date and time picker buttons.
         // By default the transaction is given the current date and time.
-        formatDate = new SimpleDateFormat("dd/MM/yyyy");
+        formatViewDate = new SimpleDateFormat("dd/MM/yyyy");
+        formatStoreDate = new SimpleDateFormat("yyyy/MM/dd");
         formatTime = new SimpleDateFormat("HH:mm");
         transactionDate = Calendar.getInstance();
         transactionYear = transactionDate.get(Calendar.YEAR);
@@ -57,7 +58,7 @@ public class TransactionIncomeFragment extends Fragment {
         transactionDay = transactionDate.get(Calendar.DAY_OF_MONTH);
         transactionHour = transactionDate.get(Calendar.HOUR_OF_DAY);
         transactionMinute = transactionDate.get(Calendar.MINUTE);
-        datePickerBtn.setText(formatDate.format(transactionDate.getTime()));
+        datePickerBtn.setText(formatViewDate.format(transactionDate.getTime()));
         timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
 
         DBHandler db = new DBHandler(getActivity());
@@ -104,7 +105,7 @@ public class TransactionIncomeFragment extends Fragment {
                     Transaction tempTransaction = new Transaction(
                             transactionName.getText().toString(),
                             Double.parseDouble(transactionValue.getText().toString()),
-                            datePickerBtn.getText().toString(),
+                            formatStoreDate.format(transactionDate.getTime()),
                             timePickerBtn.getText().toString(),
                             selectedAccount,
                             transactionNote.getText().toString()
@@ -138,7 +139,7 @@ public class TransactionIncomeFragment extends Fragment {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             transactionDate.set(year, month, dayOfMonth);
-            datePickerBtn.setText(formatDate.format(transactionDate.getTime()));
+            datePickerBtn.setText(formatViewDate.format(transactionDate.getTime()));
         }
     };
 

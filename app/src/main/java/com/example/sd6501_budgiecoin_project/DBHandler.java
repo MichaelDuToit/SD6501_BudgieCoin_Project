@@ -118,7 +118,7 @@ public class DBHandler  extends SQLiteOpenHelper {
     public ArrayList<Transaction> getAllTransactions(){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<Transaction> allTransactions = new ArrayList<>();
-        String query = "SELECT id, transactionName, value, account, note, date, time FROM " + TABLE_TRANSACTIONS;
+        String query = "SELECT id, transactionName, value, account, note, date, time FROM " + TABLE_TRANSACTIONS + " ORDER BY date desc, time desc";
         Cursor cursor = db.rawQuery(query, null);
         while(cursor.moveToNext()){
             Transaction transaction = new Transaction();
@@ -192,7 +192,7 @@ public class DBHandler  extends SQLiteOpenHelper {
     public ArrayList<Account> getAllAccounts(){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<Account> allAccounts = new ArrayList<>();
-        String query = "SELECT id, accountName FROM " + TABLE_ACCOUNTS;
+        String query = "SELECT id, accountName FROM " + TABLE_ACCOUNTS + " ORDER BY accountName asc";
         Cursor cursor = db.rawQuery(query, null);
         while(cursor.moveToNext()){
             Account account = new Account();

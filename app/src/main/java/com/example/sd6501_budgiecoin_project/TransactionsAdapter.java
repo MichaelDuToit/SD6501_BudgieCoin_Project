@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -67,20 +69,28 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
             } else {
                 holder = (ViewHolder)view.getTag();
             }
+
             DBHandler db = new DBHandler(getContext());
             holder.transactionName.setText(transactions.get(position).getName());
             holder.transactionValue.setText(
                     NumberFormat.getCurrencyInstance(new Locale("en", "NZ")).format(
                             transactions.get(position).getValue()
-                    )
-            );
+                    ));
             holder.transactionAccount.setText(
                     db.getAccount(transactions.get(position).getAccount()).getName()
             );
-
         } catch (Exception ex){
 
         }
+
+        view.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // TODO: This needs to call an update transaction view and pass the transaction to it.
+                Toast.makeText(getContext(), "Selected Transaction ID " + transactions.get(position).getName(), Toast.LENGTH_LONG).show();
+            }
+        });
+
         return view;
     }
 
