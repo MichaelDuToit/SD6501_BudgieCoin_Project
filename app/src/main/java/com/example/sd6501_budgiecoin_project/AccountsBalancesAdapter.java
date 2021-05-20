@@ -22,10 +22,12 @@ import java.util.Locale;
 // https://stackoverflow.com/questions/15297840/populate-listview-from-arraylist-of-objects
 
 public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
+
     private Activity activity;
     private ArrayList<Account> account;
     private static LayoutInflater inflater = null;
 
+    // Setup the default constructor.
     public AccountsBalancesAdapter(Activity activity, int textViewResourceId, ArrayList<Account> acc){
         super(activity, textViewResourceId, acc);
         try {
@@ -37,6 +39,7 @@ public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
         }
     }
 
+    // Implement the required methods for extending ArrayAdapter.
     public int getCount(){
         return account.size();
     }
@@ -54,6 +57,7 @@ public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
         public TextView accountBalance;
     }
 
+    // Configure the adaptor to use a custom view, connect the View components to the list values.
     public View getView(int position, View convertView, ViewGroup parent){
         View view = convertView;
         final ViewHolder holder;

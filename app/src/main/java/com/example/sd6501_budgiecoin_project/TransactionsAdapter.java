@@ -36,7 +36,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         }
     }
 
-
+    // Methods that must be implemented due to extending ArrayAdapter
     public int getCount(){
         return transactions.size();
     }
@@ -49,12 +49,14 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         return position;
     }
 
+    // Setup a ViewHolder class.
     public static class ViewHolder {
         public TextView transactionName;
         public TextView transactionValue;
         public TextView transactionAccount;
     }
 
+    // Configure the adaptor to use a custom view, connect the View components to the list values.
     public View getView(int position, View convertView, ViewGroup parent){
         View view = convertView;
         final ViewHolder holder;

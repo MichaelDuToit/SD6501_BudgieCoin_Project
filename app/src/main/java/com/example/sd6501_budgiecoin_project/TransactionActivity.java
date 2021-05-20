@@ -27,13 +27,16 @@ public class TransactionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.addTransactionLbl);
 
+        // Setup the TabLayout and ViewPager view components.
         tabLayout = findViewById(R.id.transactionTabLayout);
         viewPager = findViewById(R.id.viewPager);
 
+        // Create the TransactionViewAdapter and add the specified fragments to it.
         transactionViewAdapter = new TransactionViewAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         transactionViewAdapter.addFragment(new TransactionIncomeFragment(),"Income");
         transactionViewAdapter.addFragment(new TransactionExpenseFragment(), "Expense");
 
+        // Set the viewPager's adapter to the transactionViewAdaptor and then set tabLayout with the viewPager.
         viewPager.setAdapter(transactionViewAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }

@@ -19,6 +19,7 @@ public class ViewAccountActivity extends AppCompatActivity {
     int accountID;
     EditText etAccountName;
     Button updateBtn, deleteBtn;
+    Account selectedAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +41,24 @@ public class ViewAccountActivity extends AppCompatActivity {
 
         // DB connection and get the specified account
         DBHandler db = new DBHandler(this);
-        Account account = db.getAccount(accountID);
+        selectedAccount = db.getAccount(accountID);
 
         // Set the name field to the account's name.
         etAccountName = findViewById(R.id.accountName);
-        etAccountName.setText(account.getName());
+        etAccountName.setText(selectedAccount.getName());
     }
 
+    // Method for when the Update Button in the view is clicked. Update the selected account with the new details.
     public void updateAccount(View v){
         DBHandler db = new DBHandler(this);
         String newName = etAccountName.getText().toString();
-        db.updateAccount(accountID, newName);
+        selectedAccount.setName(etAccountName.getText().toString());
+        db.updateAccount(selectedAccount);
         startActivity(new Intent(this, AccountBalancesActivity.class));
     }
 
+    // Method for when the Delete Btn in the view is clicked. Prompt user to confirm deletion,
+    // if confirmed delete the selected account.
     public void deleteAccount(View v){
         DBHandler db = new DBHandler(this);
         AlertDialog confirmationDialog = new AlertDialog.Builder(this)

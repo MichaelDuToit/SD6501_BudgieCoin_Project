@@ -19,6 +19,7 @@ import java.util.concurrent.Executor;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // Fields for the activity
     EditText userInput, pinInput;
     TextView errorMsg;
     User user = new User("admin", "4321");
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         // Configure the Biometric Login Prompts and methods
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(LoginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
-            // These three methods need to be overriden to implement the BiometricPrompt.
+            // These three methods need to be overridden to implement the BiometricPrompt.
             // Override the onAuthenticationError method
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {

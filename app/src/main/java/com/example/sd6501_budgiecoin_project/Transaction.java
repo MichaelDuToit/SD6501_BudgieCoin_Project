@@ -70,13 +70,4 @@ public class Transaction {
     public void setTime(String time){this.time = time;}
     public String getTime(){return time; }
 
-    // Methods that manage transactions as Income (Positive) or Expenses (Negative)
-    public double Expense(double val){
-        val = -val;
-        return this.value = val;
-    }
-
-    public double Income(double val){
-        return this.value = val;
-    }
 }

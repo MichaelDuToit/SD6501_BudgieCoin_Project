@@ -14,7 +14,8 @@ public class Account {
         this.balance = 0.0;
     }
 
-    // Constructor that only takes name field. Primary use: creation of Account obj that gets passed to DB (that sets ID).
+    // Constructor that only takes name field. Primary use: creation of Account obj that gets
+    // passed to DB (DB sets the ID).
     public Account(String name){
         this.id = 0;
         this.name = name;

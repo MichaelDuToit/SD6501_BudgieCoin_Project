@@ -11,7 +11,6 @@ public class User {
         this.pinNumber = pin;
     }
 
-
     // Accessor and Mutators of the Class
     public String getUsername() {
         return username;

@@ -67,7 +67,7 @@ public abstract class AppCompatNavigationDrawerActivity extends AppCompatActivit
     }
 
     // Using a switch statement that checks which menu item has been clicked and sets the intent attribute
-    // to that item's Activity. Then uses the intent attribute to navigate to that activity anc closes the
+    // to that item's Activity. Then uses the intent attribute to navigate to that activity and closes the
     // navigation drawer.
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

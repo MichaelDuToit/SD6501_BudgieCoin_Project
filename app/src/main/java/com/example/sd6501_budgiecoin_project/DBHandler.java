@@ -71,19 +71,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void createTransaction(String name, double value, String date, String time, int account, String note){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_TRANS_NAME, name);
-        values.put(KEY_TRANS_VALUE, value);
-        values.put(KEY_TRANS_DATE, date);
-        values.put(KEY_TRANS_TIME, time);
-        values.put(KEY_TRANS_ACC, String.valueOf(account));
-        values.put(KEY_TRANS_NOTE, note);
-        long newRowId = db.insert(TABLE_TRANSACTIONS, null, values);
-        db.close();
-    }
-
+    // To create an transaction in the DB, pass a transaction class to the method.
     public void createTransaction(Transaction transaction){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -97,6 +85,8 @@ public class DBHandler  extends SQLiteOpenHelper {
         db.close();
     }
 
+    // To get a specific transaction from the DB, pass the transaction's ID to the method and it
+    // will return the first record that has that ID.
     public Transaction getTransaction(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         Transaction transaction = new Transaction();
@@ -115,6 +105,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         return transaction;
     }
 
+    // Get all the transactions in the Transaction table from the DB and return it in an ArrayList.
     public ArrayList<Transaction> getAllTransactions(){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<Transaction> allTransactions = new ArrayList<>();
@@ -135,25 +126,15 @@ public class DBHandler  extends SQLiteOpenHelper {
         return allTransactions;
     }
 
+    // To delete a specific transaction, pass the transaction's ID to the method.
     public void deleteTransaction(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_TRANSACTIONS, KEY_TRANS_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
 
-    public int updateTransaction(int id, String name, double value, String date, String time, Account account, String note){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(KEY_TRANS_NAME, name);
-        contentValues.put(KEY_TRANS_ACC, String.valueOf(account));
-        contentValues.put(KEY_TRANS_VALUE, String.valueOf(value));
-        contentValues.put(KEY_TRANS_DATE, date);
-        contentValues.put(KEY_TRANS_TIME, time);
-        contentValues.put(KEY_TRANS_NOTE, note);
-        int update = db.update(TABLE_TRANSACTIONS, contentValues, KEY_TRANS_ID + " = ?", new String[]{String.valueOf(id)});
-        return update;
-    }
-
+    // To update a transaction, pass the Transaction object to this method which will then update
+    // the DB record where the ID matches.
     public int updateTransaction(Transaction transaction){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -167,6 +148,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         return update;
     }
 
+    // To create an Account, pass an Account object to the method.
     public void createAccount(Account account){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -175,7 +157,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         db.close();
     }
 
-
+    // To get a specific Account, pass the account's ID to this method.
     public Account getAccount(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         Account account = new Account();
@@ -189,6 +171,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         return account;
     }
 
+    // Use this method to get all the Accounts in the Account Table and return them in an ArrayList.
     public ArrayList<Account> getAllAccounts(){
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<Account> allAccounts = new ArrayList<>();
@@ -204,6 +187,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         return allAccounts;
     }
 
+    // To get the total balance of a specific account, pass the specified account's ID to this method.
     public double getAccountBalance(int accountID){
         SQLiteDatabase db = this.getReadableDatabase();
         double sum = 0.0;
@@ -216,17 +200,19 @@ public class DBHandler  extends SQLiteOpenHelper {
         return sum;
     }
 
+    // To delete an account, pass the account that you want to delete's method to this method.
     public void deleteAccount(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_ACCOUNTS, KEY_ACC_ID + " = ?", new String[]{String.valueOf(id)});
         db.close();
     }
 
-    public int updateAccount(int id, String accountName){
+    // To update a specific account, pass the Account object to this method.
+    public int updateAccount(Account account){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(KEY_ACC_NAME, accountName);
-        int update = db.update(TABLE_ACCOUNTS, contentValues, KEY_ACC_ID + " = ?", new String[]{String.valueOf(id)});
+        contentValues.put(KEY_ACC_NAME, account.getName());
+        int update = db.update(TABLE_ACCOUNTS, contentValues, KEY_ACC_ID + " = ?", new String[]{String.valueOf(account.getId())});
         return update;
     }
 

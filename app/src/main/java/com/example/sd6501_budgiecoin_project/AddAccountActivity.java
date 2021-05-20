@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class AddAccountActivity extends AppCompatActivity {
             startActivity(new Intent(this, AccountBalancesActivity.class));
         } catch (Exception e) {
             Toast.makeText(this, R.string.t_accountError, Toast.LENGTH_SHORT).show();
+            Log.e("BudgieCoin: ", "Exception Occurred: " + e);
         }
     }
 

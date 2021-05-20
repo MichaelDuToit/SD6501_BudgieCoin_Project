@@ -59,10 +59,11 @@ public abstract class TransactionBaseFragment extends Fragment {
         datePickerBtn.setText(formatViewDate.format(transactionDate.getTime()));
         timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
 
+        // Create a DB instance and get an ArrayList of all the Accounts from it.
         DBHandler db = new DBHandler(getActivity());
         ArrayList<Account> allAccounts;
         allAccounts = db.getAllAccounts();
-        // then create adapter, set adapter with spinner and allAccounts as source.
+        // Then create adapter, set adapter with spinner and allAccounts as source.
         AccountsBalancesAdapter adapter = new AccountsBalancesAdapter(getActivity(), 0, allAccounts);
         accountSelectionSpinner.setAdapter(adapter);
         accountSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -79,6 +80,7 @@ public abstract class TransactionBaseFragment extends Fragment {
             }
         });
 
+        // Set the onClick listener for the Time Picker Button.
         timePickerBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -87,6 +89,7 @@ public abstract class TransactionBaseFragment extends Fragment {
             }
         });
 
+        // Set the onClick listener for the Date Picker Button
         datePickerBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -122,6 +125,7 @@ public abstract class TransactionBaseFragment extends Fragment {
             }
         });
 
+        // Set the onClick listener for the Cancel Btn, if clicked return to the MainActivity.
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,5 +156,6 @@ public abstract class TransactionBaseFragment extends Fragment {
         }
     };
 
-    public abstract void TransactionProcess();
+    // This method must be implemented in classes that inherit that class and should contain the code to manage the transaction.
+    protected abstract void TransactionProcess();
 }

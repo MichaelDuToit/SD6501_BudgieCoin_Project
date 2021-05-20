@@ -38,12 +38,15 @@ public class AccountBalancesActivity extends AppCompatNavigationDrawerActivity {
         navView.setCheckedItem(R.id.nav_balance);
         getSupportActionBar().setTitle(R.string.accounts);
 
+        // Setup the Adapter, DBHandler and get a list of all the accounts
         accountsList = findViewById(R.id.accountsList);
         DBHandler db = new DBHandler(this);
         ArrayList<Account> accounts = db.getAllAccounts();
         AccountsBalancesAdapter balancesAdapter = new AccountsBalancesAdapter(this, 0, accounts);
         accountsList.setAdapter(balancesAdapter);
 
+        // Set onClick listener on the list items. OnClick go to the View Account activity and
+        // pass the selected account's ID to the activity.
         accountsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
