@@ -55,11 +55,12 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         lvAllTransactions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // TODO: This needs to be updated to the new fragment based activity.
-                Intent intent = new Intent(getApplicationContext(), TransactionActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TransactionUpdateActivity.class);
                 int selectedTransaction = transactionsAdapter.getItem(position).getId();
+                double selectedTransactionValue = transactionsAdapter.getItem(position).getValue();
                 Bundle bundle = new Bundle();
                 bundle.putInt("TransactionID", selectedTransaction);
+                bundle.putDouble("TransactionValue", selectedTransactionValue);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

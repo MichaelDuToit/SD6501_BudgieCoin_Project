@@ -62,16 +62,16 @@ public class ViewAccountActivity extends AppCompatActivity {
     public void deleteAccount(View v){
         DBHandler db = new DBHandler(this);
         AlertDialog confirmationDialog = new AlertDialog.Builder(this)
-                .setTitle("Delete Account")
-                .setMessage("Are you sure you want to delete this account?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.lbl_deleteAccount)
+                .setMessage(R.string.msg_deleteAccount)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         db.deleteAccount(accountID);
                         startActivity(new Intent(getApplicationContext(), AccountBalancesActivity.class));
                     }
                 })
-                .setNegativeButton("No", null).show();
+                .setNegativeButton(R.string.no, null).show();
         confirmationDialog.show();
     }
 }

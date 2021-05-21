@@ -69,7 +69,6 @@
             android:layout_margin="15dp"
             android:inputType="textMultiLine"
             android:hint="@string/note"
-
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,21 +79,32 @@
             android:layout_margin="25dp"
             >
             <Button
-                android:id="@+id/btnSaveTransaction"
+                android:id="@+id/btnUpdateTransaction"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/btnSave"
+                android:text="@string/btnUpdate"
                 android:layout_gravity="left"
                 android:background="@color/budgiePurple"
                 android:textColor="@color/budgieYellow"
+                />
+            <Button
+                android:id="@+id/btnDeleteTransaction"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/btnDelete"
+                android:layout_gravity="center"
+                android:background="@color/red"
+                android:textColor="@color/budgieYellow"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
                 />
             <Button
                 android:id="@+id/btnCancelTransaction"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:text="@string/btnCancel"
                 android:layout_gravity="right"
                 android:background="@color/budgiePurple"

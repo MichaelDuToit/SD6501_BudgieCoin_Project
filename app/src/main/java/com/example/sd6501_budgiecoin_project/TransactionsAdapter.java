@@ -2,6 +2,8 @@ package com.example.sd6501_budgiecoin_project;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,16 +84,8 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
                     db.getAccount(transactions.get(position).getAccount()).getName()
             );
         } catch (Exception ex){
-
+            Log.e("BudgieCoin: ", "Exception Occurred: " + ex);
         }
-
-        view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                // TODO: This needs to call an update transaction view and pass the transaction to it.
-                Toast.makeText(getContext(), "Selected Transaction ID " + transactions.get(position).getName(), Toast.LENGTH_LONG).show();
-            }
-        });
 
         return view;
     }

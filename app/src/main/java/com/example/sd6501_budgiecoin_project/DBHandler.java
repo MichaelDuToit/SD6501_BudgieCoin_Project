@@ -145,6 +145,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         contentValues.put(KEY_TRANS_TIME, transaction.getTime());
         contentValues.put(KEY_TRANS_NOTE, transaction.getNote());
         int update = db.update(TABLE_TRANSACTIONS, contentValues, KEY_TRANS_ID + " = ?", new String[]{String.valueOf(transaction.getId())});
+        db.close();
         return update;
     }
 
@@ -213,6 +214,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_ACC_NAME, account.getName());
         int update = db.update(TABLE_ACCOUNTS, contentValues, KEY_ACC_ID + " = ?", new String[]{String.valueOf(account.getId())});
+        db.close();
         return update;
     }
 

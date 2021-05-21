@@ -11,6 +11,14 @@
     <string name="btnDelete">Delete</string>
     <string name="lbl_open">Open</string>
     <string name="lbl_close">Close</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="lbl_deleteAccount">Delete Account</string>
+    <string name="lbl_deleteTransaction">Delete Transaction</string>
+    <string name="lbl_createTransaction">Create a Transaction</string>
+    <string name="lbl_updateTransaction">Update Transaction</string>
+    <string name="msg_deleteAccount">Are you sure you want to delete this Account?</string>
+    <string name="msg_deleteTransaction">Are you sure you want to delete this Transaction?</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
     <string name="timePickerSelection">00:00</string>
@@ -49,6 +57,10 @@
     <string name="t_transactionCreated">Transaction Created</string>
     <string name="t_transactionCanceled">Transaction Creation Cancelled</string>
     <string name="t_transactionError">Transaction Creation Error</string>
+    <string name="t_transactionDeleted">Transaction Deleted</string>
+    <string name="t_transactionUpdate">Transaction Updated</string>
+    <string name="t_transactionUpdateCancelled">Transaction Update Cancelled</string>
+    <string name="t_transactionUpdateError">Transaction Update Error</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
