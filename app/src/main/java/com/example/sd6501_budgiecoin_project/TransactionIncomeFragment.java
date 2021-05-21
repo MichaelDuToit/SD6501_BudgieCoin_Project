@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class TransactionIncomeFragment extends TransactionBaseFragment {
+
     @Override
     public void TransactionProcess(){
         try {

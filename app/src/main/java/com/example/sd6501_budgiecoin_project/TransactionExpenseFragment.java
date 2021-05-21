@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class TransactionExpenseFragment extends TransactionBaseFragment {
+
     @Override
     public void TransactionProcess() {
         try {
@@ -44,8 +45,7 @@ public class TransactionExpenseFragment extends TransactionBaseFragment {
 
             Toast.makeText(getActivity(), R.string.t_transactionCreated, Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getContext(), ViewTransactionsActivity.class));
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             Toast.makeText(getActivity(), R.string.t_transactionError, Toast.LENGTH_LONG).show();
             Log.e("BudgieCoin: ", "Exception Occurred: " + e);
         }

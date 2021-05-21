@@ -22,13 +22,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public abstract class TransactionBaseFragment extends Fragment {
+
     public Button datePickerBtn, timePickerBtn, saveTransactionBtn, cancelBtn;
     public EditText transactionName, transactionValue, transactionNote;
     protected SimpleDateFormat formatViewDate, formatStoreDate, formatTime;
     public Calendar transactionDate;
     public int transactionYear, transactionMonth, transactionDay, transactionHour, transactionMinute, selectedAccount;
     public Spinner accountSelectionSpinner;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance){
@@ -98,30 +98,11 @@ public abstract class TransactionBaseFragment extends Fragment {
             }
         });
 
+        // When the Save Transaction btn is clicked, call the TransactionProcess, which should be implemented by the children.
         saveTransactionBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                try {
-                    Double negativeValue = Double.parseDouble(transactionValue.getText().toString());
-                    negativeValue = -negativeValue;
-                    // Assignment 2 - store transaction values to Transaction obj which is then added to DB
-                    Transaction tempTransaction = new Transaction(
-                            transactionName.getText().toString(),
-                            negativeValue,
-                            formatStoreDate.format(transactionDate.getTime()),
-                            timePickerBtn.getText().toString(),
-                            selectedAccount,
-                            transactionNote.getText().toString()
-                    );
-                    DBHandler db = new DBHandler(getActivity());
-                    db.createTransaction(tempTransaction);
-
-                    Toast.makeText(getActivity(), R.string.t_transactionCreated, Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getContext(), ViewTransactionsActivity.class));
-                }
-                catch(Exception e) {
-                    Toast.makeText(getActivity(), R.string.t_transactionError, Toast.LENGTH_LONG).show();
-                }
+                TransactionProcess();
             }
         });
 
@@ -158,4 +139,5 @@ public abstract class TransactionBaseFragment extends Fragment {
 
     // This method must be implemented in classes that inherit that class and should contain the code to manage the transaction.
     protected abstract void TransactionProcess();
+
 }
