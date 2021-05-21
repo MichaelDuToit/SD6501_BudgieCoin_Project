@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
@@ -56,6 +57,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         public TextView transactionName;
         public TextView transactionValue;
         public TextView transactionAccount;
+        public TextView transactionDate;
     }
 
     // Configure the adaptor to use a custom view, connect the View components to the list values.
@@ -69,6 +71,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
                 holder.transactionName = (TextView)view.findViewById(R.id.transactionName);
                 holder.transactionValue = (TextView) view.findViewById(R.id.transactionValue);
                 holder.transactionAccount = (TextView) view.findViewById(R.id.transactionAccount);
+                holder.transactionDate = (TextView) view.findViewById(R.id.transactionDate);
                 view.setTag(holder);
             } else {
                 holder = (ViewHolder)view.getTag();
@@ -83,6 +86,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
             holder.transactionAccount.setText(
                     db.getAccount(transactions.get(position).getAccount()).getName()
             );
+            holder.transactionDate.setText(transactions.get(position).getDate());
         } catch (Exception ex){
             Log.e("BudgieCoin: ", "Exception Occurred: " + ex);
         }
