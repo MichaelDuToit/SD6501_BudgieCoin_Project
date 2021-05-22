@@ -16,6 +16,7 @@ public class TransactionUpdateActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TransactionViewAdapter transactionViewAdapter;
+    int pagerIndex;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,18 +38,17 @@ public class TransactionUpdateActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             double value = getIntent().getExtras().getDouble("TransactionValue");
             Log.i("BudgieCoin: ", "Extras Transaction Value: " + value);
-            int pagerIndex;
-            if (value < 0.0) {
+            if (value < -0.001) {
                 pagerIndex = 1;
             } else {
                 pagerIndex = 0;
             }
             transactionViewAdapter.addFragment(new TransactionUpdateIncomeFragment(), "Income");
             transactionViewAdapter.addFragment(new TransactionUpdateExpenseFragment(), "Expense");
-            viewPager.setCurrentItem(pagerIndex);
         }
         // Set the viewPager's adapter to the transactionViewAdaptor and then set tabLayout with the viewPager.
         viewPager.setAdapter(transactionViewAdapter);
+        viewPager.setCurrentItem(pagerIndex);
         tabLayout.setupWithViewPager(viewPager);
     }
 }

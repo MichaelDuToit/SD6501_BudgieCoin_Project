@@ -79,7 +79,7 @@ public class AccountsBalancesAdapter extends ArrayAdapter<Account> {
             );
 
         } catch (Exception ex){
-
+            Log.e("BudgieCoin: ", "Exception Occurred: " + ex);
         }
         return view;
     }

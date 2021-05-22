@@ -47,7 +47,6 @@ public class TransactionIncomeFragment extends TransactionBaseFragment {
         catch(Exception e) {
             Toast.makeText(getActivity(), R.string.t_transactionError, Toast.LENGTH_LONG).show();
             Log.e("BudgieCoin: ", "Exception Occurred: " + e);
-
         }
     }
 }

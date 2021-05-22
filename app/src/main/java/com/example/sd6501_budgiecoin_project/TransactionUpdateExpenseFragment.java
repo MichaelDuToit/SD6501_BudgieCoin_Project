@@ -6,12 +6,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class TransactionUpdateExpenseFragment extends TransactionUpdateBaseFragment {
 
     @Override
-    protected void UpdateTransaction(Transaction transaction) {
-
+    protected void UpdateTransaction() {
         double value = Double.parseDouble(transactionValue.getText().toString());
 
         if(value > 0){
@@ -20,6 +20,7 @@ public class TransactionUpdateExpenseFragment extends TransactionUpdateBaseFragm
 
         try {
             Transaction tempTransaction = new Transaction(
+                    transactionID,
                     transactionName.getText().toString(),
                     value,
                     formatStoreDate.format(transactionDate.getTime()),
@@ -34,6 +35,6 @@ public class TransactionUpdateExpenseFragment extends TransactionUpdateBaseFragm
         } catch (Exception e){
             Log.e("BudgieCoin: ", "Exception Occurred: " + e);
         }
+        startActivity(new Intent(getContext(), ViewTransactionsActivity.class));
     }
-
 }

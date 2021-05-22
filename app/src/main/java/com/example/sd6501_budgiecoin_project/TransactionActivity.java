@@ -34,24 +34,8 @@ public class TransactionActivity extends AppCompatActivity {
 
         // Create the TransactionViewAdapter and add the specified fragments to it.
         transactionViewAdapter = new TransactionViewAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-
-//        if( getIntent().getExtras() != null){
-//            double value = getIntent().getExtras().getDouble("TransactionValue");
-//            Log.i("BudgieCoin: ", "Extras Transaction Value: " + value);
-//            int pagerIndex;
-//            if(value < 0.0){
-//                pagerIndex = 1;
-//            } else {
-//                pagerIndex = 0;
-//            }
-//            transactionViewAdapter.addFragment(new TransactionUpdateIncomeFragment(), "Income");
-//            transactionViewAdapter.addFragment(new TransactionUpdateExpenseFragment(), "Expense");
-//            viewPager.setCurrentItem(pagerIndex);
-//
-//        } else {
-            transactionViewAdapter.addFragment(new TransactionIncomeFragment(),"Income");
-            transactionViewAdapter.addFragment(new TransactionExpenseFragment(), "Expense");
-//        }
+        transactionViewAdapter.addFragment(new TransactionIncomeFragment(),"Income");
+        transactionViewAdapter.addFragment(new TransactionExpenseFragment(), "Expense");
 
         // Set the viewPager's adapter to the transactionViewAdaptor and then set tabLayout with the viewPager.
         viewPager.setAdapter(transactionViewAdapter);

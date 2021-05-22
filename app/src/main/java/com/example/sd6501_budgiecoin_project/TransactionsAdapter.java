@@ -35,7 +35,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
             this.transactions = transactions;
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         } catch (Exception ex){
-            Log.e(String.valueOf(R.string.app_name), ex.toString());
+            Log.e("BudgieCoin: ", "Exception Occurred: " + ex);
         }
     }
 

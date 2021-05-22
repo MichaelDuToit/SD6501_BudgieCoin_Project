@@ -21,27 +21,27 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public abstract class TransactionUpdateBaseFragment extends Fragment {
 
     public Button datePickerBtn, timePickerBtn, updateTransactionBtn, cancelBtn, deleteTransactionBtn;
     public EditText transactionName, transactionValue, transactionNote;
-    protected SimpleDateFormat formatViewDate, formatStoreDate, formatTime;
+    protected SimpleDateFormat formatViewDate, formatStoreDate, formatTime, formatDate;
     public Calendar transactionDate;
     public int transactionYear, transactionMonth, transactionDay, transactionHour, transactionMinute, selectedAccount;
     public Spinner accountSelectionSpinner;
-    Transaction selectedTransaction;
     int transactionID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance) {
         super.onCreateView(inflater, container, savedInstance);
         View view = inflater.inflate(R.layout.transaction_update_base, container, false);
-
-        transactionID = getActivity().getIntent().getExtras().getInt("TransactionID");
 
         // Connect layout input attributes to layout fields
         updateTransactionBtn = (Button)view.findViewById(R.id.btnUpdateTransaction);
@@ -68,12 +68,15 @@ public abstract class TransactionUpdateBaseFragment extends Fragment {
         datePickerBtn.setText(formatViewDate.format(transactionDate.getTime()));
         timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
 
+        // TODO: format date and time buttons with from DB.
 
+        // Get the ID of the transaction from the Intent
+        transactionID = getActivity().getIntent().getExtras().getInt("TransactionID");
+        // Then get the transaction from the DB and store it to a Transaction object.
         DBHandler db = new DBHandler(getContext());
         Transaction tempTransaction = db.getTransaction(transactionID);
         transactionName.setText(tempTransaction.getName());
         transactionValue.setText(String.valueOf(tempTransaction.getValue()));
-        transactionNote.setText(tempTransaction.getNote());
 
         // Create a DB instance and get an ArrayList of all the Accounts from it.
         ArrayList<Account> allAccounts;
@@ -120,12 +123,11 @@ public abstract class TransactionUpdateBaseFragment extends Fragment {
                 datePicker.show();
             }
         });
-        // When the Save Transaction btn is clicked, call the TransactionProcess, which should be implemented by the children.
+        // When the Save Transaction btn is clicked, call the TransactionProcess, which should be implemented by the child classes.
         updateTransactionBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Log.i("BudgieCoin: ", "Update Btn Clicked");
-                UpdateTransaction(tempTransaction);
+                UpdateTransaction();
                 startActivity(new Intent(getContext(), ViewTransactionsActivity.class));
             }
         });
@@ -180,6 +182,6 @@ public abstract class TransactionUpdateBaseFragment extends Fragment {
             timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
         }
     };
-
-    protected abstract void UpdateTransaction(Transaction transaction);
+    // This method must be implemented by child classes and manage the updating on the transaction and the
+    protected abstract void UpdateTransaction();
 }
