@@ -2,6 +2,7 @@
 <LinearLayout android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/viewTransactionsActivity"
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context=".ViewTransactionsActivity"
     xmlns:tools="http://schemas.android.com/tools"
