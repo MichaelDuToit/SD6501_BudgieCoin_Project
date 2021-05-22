@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -88,7 +89,7 @@ public class DBHandler  extends SQLiteOpenHelper {
     // To get a specific transaction from the DB, pass the transaction's ID to the method and it
     // will return the first record that has that ID.
     public Transaction getTransaction(int id){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Transaction transaction = new Transaction();
         String query = "SELECT id, transactionName, value, account, note, date, time FROM " + TABLE_TRANSACTIONS + " WHERE " + KEY_TRANS_ID + " = " + id;
         Cursor cursor = db.rawQuery(query, null);
@@ -102,12 +103,13 @@ public class DBHandler  extends SQLiteOpenHelper {
             transaction.setNote(cursor.getString(cursor.getColumnIndex(KEY_TRANS_NOTE)));
             cursor.close();
         }
+        db.close();
         return transaction;
     }
 
     // Get all the transactions in the Transaction table from the DB and return it in an ArrayList.
     public ArrayList<Transaction> getAllTransactions(){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Transaction> allTransactions = new ArrayList<>();
         String query = "SELECT id, transactionName, value, account, note, date, time FROM " + TABLE_TRANSACTIONS + " ORDER BY date desc, time desc";
         Cursor cursor = db.rawQuery(query, null);
@@ -123,6 +125,7 @@ public class DBHandler  extends SQLiteOpenHelper {
             allTransactions.add(transaction);
         }
         cursor.close();
+        db.close();
         return allTransactions;
     }
 
@@ -135,7 +138,7 @@ public class DBHandler  extends SQLiteOpenHelper {
 
     // To update a transaction, pass the Transaction object to this method which will then update
     // the DB record where the ID matches.
-    public int updateTransaction(Transaction transaction){
+    public void updateTransaction(Transaction transaction){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_TRANS_NAME, transaction.getName());
@@ -144,9 +147,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         contentValues.put(KEY_TRANS_DATE, transaction.getDate());
         contentValues.put(KEY_TRANS_TIME, transaction.getTime());
         contentValues.put(KEY_TRANS_NOTE, transaction.getNote());
-        int update = db.update(TABLE_TRANSACTIONS, contentValues, KEY_TRANS_ID + " = ?", new String[]{String.valueOf(transaction.getId())});
-        db.close();
-        return update;
+        db.update(TABLE_TRANSACTIONS, contentValues, KEY_TRANS_ID + " = ?", new String[]{String.valueOf(transaction.getId())});
     }
 
     // To create an Account, pass an Account object to the method.
@@ -160,7 +161,7 @@ public class DBHandler  extends SQLiteOpenHelper {
 
     // To get a specific Account, pass the account's ID to this method.
     public Account getAccount(int id){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Account account = new Account();
         String query = "SELECT id, accountName FROM " + TABLE_ACCOUNTS + " WHERE " + KEY_ACC_ID + " = " + id;
         Cursor cursor = db.rawQuery(query, null);
@@ -169,12 +170,13 @@ public class DBHandler  extends SQLiteOpenHelper {
             account.setName(cursor.getString(cursor.getColumnIndex(KEY_ACC_NAME)));
             cursor.close();
         }
+        db.close();
         return account;
     }
 
     // Use this method to get all the Accounts in the Account Table and return them in an ArrayList.
     public ArrayList<Account> getAllAccounts(){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Account> allAccounts = new ArrayList<>();
         String query = "SELECT id, accountName FROM " + TABLE_ACCOUNTS + " ORDER BY accountName asc";
         Cursor cursor = db.rawQuery(query, null);
@@ -185,6 +187,7 @@ public class DBHandler  extends SQLiteOpenHelper {
             allAccounts.add(account);
         }
         cursor.close();
+        db.close();
         return allAccounts;
     }
 
@@ -198,6 +201,7 @@ public class DBHandler  extends SQLiteOpenHelper {
             sum += Double.valueOf(cursor.getString(cursor.getColumnIndex(KEY_TRANS_VALUE)));
         }
         cursor.close();
+        db.close();
         return sum;
     }
 
