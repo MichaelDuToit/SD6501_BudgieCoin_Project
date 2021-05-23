@@ -45,6 +45,7 @@ public class LoginActivityTest {
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.loginActivity)).check(matches(isDisplayed()));
         onView(withId(R.id.loginUsername)).check(matches(isDisplayed()));
+        onView(withId(R.id.btnRegister)).check(matches(isDisplayed()));
         onView(withId(R.id.loginPin)).check(matches(isDisplayed()));
         onView(withId(R.id.pinLoginBtn)).check(matches(isDisplayed()));
         onView(withId(R.id.biometricLoginBtn)).check(matches(isDisplayed()));
@@ -66,6 +67,14 @@ public class LoginActivityTest {
         onView(withId(R.id.loginPin)).perform(typeText(validUser.getPinNumber()));
         onView(withId(R.id.pinLoginBtn)).perform(click());
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
+    }
+
+    // Check that activity navigates to Register Activity on Register Btn click
+    @Test
+    public void testRegisterButton(){
+        onView(withId(R.id.btnRegister)).check(matches(isDisplayed()));
+        onView(withId(R.id.btnRegister)).perform(click());
+        onView(withId(R.id.registrationActivity)).check(matches(isDisplayed()));
     }
 
 }

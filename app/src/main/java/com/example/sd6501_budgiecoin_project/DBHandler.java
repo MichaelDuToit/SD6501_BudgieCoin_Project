@@ -20,6 +20,7 @@ public class DBHandler  extends SQLiteOpenHelper {
     private static final String DB_NAME = "BudgieCoinDB";
     private static final String TABLE_ACCOUNTS = "accounts";
     private static final String TABLE_TRANSACTIONS = "transactions";
+    private static final String TABLE_USERS = "users";
 
     // Schema for Accounts Table
     private static final String KEY_ACC_ID = "id";
@@ -35,6 +36,10 @@ public class DBHandler  extends SQLiteOpenHelper {
     private static final String KEY_TRANS_DATE = "date";
     private static final String KEY_TRANS_TIME = "time";
 
+    // Schema for Users Table
+    private static final String KEY_USER_ID = "id";
+    private static final String KEY_USER_NAME = "username";
+    private static final String KEY_USER_PIN = "pin";
 
     public DBHandler(@Nullable Context context){
         super(context, DB_NAME, null, DB_VERSION);
@@ -60,15 +65,23 @@ public class DBHandler  extends SQLiteOpenHelper {
                 + KEY_TRANS_TIME + " TEXT, "
                 + " FOREIGN KEY (" + KEY_TRANS_ACC + ") REFERENCES " + TABLE_ACCOUNTS + "(" + KEY_ACC_ID + ")"
                 + ")";
+        // Create Query for Users Table
+        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
+                + KEY_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + KEY_USER_NAME + " TEXT, "
+                + KEY_USER_PIN + " TEXT "
+                + ")";
         // Run the Create Table queries for Account and Transactions
         db.execSQL(CREATE_ACCOUNTS_TABLE);
         db.execSQL(CREATE_TRANSACTIONS_TABLE);
+        db.execSQL(CREATE_USERS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTIONS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         onCreate(db);
     }
 
@@ -220,6 +233,68 @@ public class DBHandler  extends SQLiteOpenHelper {
         int update = db.update(TABLE_ACCOUNTS, contentValues, KEY_ACC_ID + " = ?", new String[]{String.valueOf(account.getId())});
         db.close();
         return update;
+    }
+
+    // Create a User
+    public void createUser(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_USER_NAME, user.getUsername());
+        values.put(KEY_USER_PIN, user.getPinNumber());
+        long newRowId = db.insert(TABLE_USERS, null, values);
+        db.close();
+    }
+
+    // Update the specified User
+    public int updateUser(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_USER_NAME, user.getUsername());
+        values.put(KEY_USER_PIN, user.getPinNumber());
+        int update = db.update(TABLE_USERS, values, KEY_USER_ID + " = ?", new String[]{String.valueOf(user.getId())});
+        db.close();
+        return update;
+    }
+
+    // Delete the selected User
+    public void deleteUser(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USERS, KEY_USER_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    // Get All Users in Table and return in an ArrayList
+    public ArrayList<User> getAllUsers(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<User> allUsers = new ArrayList<>();
+        String query = "SELECT id, username, pin FROM " + TABLE_USERS;
+        Cursor cursor = db.rawQuery(query, null);
+        while(cursor.moveToNext()){
+            User user = new User();
+            user.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(KEY_USER_ID))));
+            user.setUsername(cursor.getString(cursor.getColumnIndex(KEY_USER_NAME)));
+            user.setPinNumber(cursor.getString(cursor.getColumnIndex(KEY_USER_PIN)));
+            allUsers.add(user);
+        }
+        cursor.close();
+        db.close();
+        return allUsers;
+    }
+
+    // Get the specified user.
+    public User getUser(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        User user = new User();
+        String query = "SELECT id, username, pin FROM " + TABLE_USERS + " WHERE " + KEY_USER_ID + " = " + id;
+        Cursor cursor = db.rawQuery(query, null);
+        if(cursor != null && cursor.moveToFirst()){
+            user.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(KEY_USER_PIN))));
+            user.setUsername(cursor.getString(cursor.getColumnIndex(KEY_USER_NAME)));
+            user.setPinNumber(cursor.getString(cursor.getColumnIndex(KEY_USER_PIN)));
+            cursor.close();
+        }
+        db.close();
+        return user;
     }
 
 }

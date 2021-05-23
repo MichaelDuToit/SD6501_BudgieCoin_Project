@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".RegistrationActivity"
+            android:parentActivityName=".LoginActivity"></activity>
         <activity
             android:name=".TransactionActivity"
             android:parentActivityName=".MainActivity" />

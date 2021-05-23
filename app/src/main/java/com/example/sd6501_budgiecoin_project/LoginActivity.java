@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.concurrent.Executor;
 
 
@@ -84,16 +85,27 @@ public class LoginActivity extends AppCompatActivity {
     // If the user attempts to login using username and password, check their details
     // and authenticate them.
     public void pinLoginAuthentication(){
-        if (userInput.getText().toString().equals(user.getUsername())) {
-            if (pinInput.getText().toString().equals(user.getPinNumber())) {
-                // If both the username and password are correct, call the goToMainActivity method.
-                goToMainActivity();
+        DBHandler db = new DBHandler(getApplicationContext());
+        ArrayList<User> allUsers = db.getAllUsers();
+        int arrSize = allUsers.size();
+        int index = 0;
+        while(arrSize > index){
+            if(userInput.getText().toString().equals(allUsers.get(index).getUsername())){
+                if (pinInput.getText().toString().equals(allUsers.get(index).getPinNumber())){
+                    goToMainActivity();
+                } else {
+                    errorMsg.setText(R.string.loginPinIncorrect);
+                }
             } else {
-                errorMsg.setText(R.string.loginPinIncorrect);
+                errorMsg.setText(R.string.loginUsernameIncorrect);
             }
-        } else {
-            errorMsg.setText(R.string.loginUsernameIncorrect);
+            index++;
         }
+    }
+
+    // Register button
+    public void registerBtn(View v){
+        startActivity(new Intent(this, RegistrationActivity.class));
     }
 
     // General purpose method to hold the intent call to go to the MainActivity class.
