@@ -29,8 +29,10 @@ public class AccountBalancesActivityTest {
         activity = null;
     }
 
+    // Check that all the view elements are present
     @Test
-    public void showAccountListing(){
+    public void checkAllViewElementsPresent(){
+        onView(withId(R.id.accountBalanceActivity)).check(matches(isDisplayed()));
         onView(withId(R.id.accountsList)).check(matches(isDisplayed()));
     }
 }

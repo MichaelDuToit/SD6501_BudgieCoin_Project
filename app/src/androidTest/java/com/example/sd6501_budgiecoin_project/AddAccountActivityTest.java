@@ -14,6 +14,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
 
 public class AddAccountActivityTest {
@@ -27,12 +28,20 @@ public class AddAccountActivityTest {
     public void setUp() throws Exception {
         activity = activityActivityTestRule.getActivity();
         testAccountInput = "Espresso Test Account";
-
     }
 
     @After
     public void tearDown() throws Exception {
         activity = null;
+    }
+
+    // Check that all the view elements are present
+    @Test
+    public void checkAllViewElementsPresent(){
+        onView(withId(R.id.addAccountActivity)).check(matches(isDisplayed()));
+        onView(withId(R.id.accountName)).check(matches(isDisplayed()));
+        onView(withId(R.id.saveAccountBtn)).check(matches(isDisplayed()));
+        onView(withId(R.id.cancelAccountBtn)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -41,6 +50,14 @@ public class AddAccountActivityTest {
         closeSoftKeyboard();
         onView(withId(R.id.saveAccountBtn)).perform(click());
         onView(withId(R.id.accountsList)).check(matches(isDisplayed()));
+        onView(withText(testAccountInput));
+    }
+
+    @Test
+    public void testAccountCancellation(){
+        onView(withId(R.id.cancelAccountBtn)).check(matches(isDisplayed()));
+        onView(withId(R.id.cancelAccountBtn)).perform(click());
+        onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
     }
 
 }
