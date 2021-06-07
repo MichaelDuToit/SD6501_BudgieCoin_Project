@@ -23,8 +23,7 @@ public class TransactionUpdateExpenseFragment extends TransactionUpdateBaseFragm
                     transactionID,
                     transactionName.getText().toString(),
                     value,
-                    formatStoreDate.format(transactionDate.getTime()),
-                    timePickerBtn.getText().toString(),
+                    transactionDate,
                     selectedAccount,
                     transactionNote.getText().toString()
             );

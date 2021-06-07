@@ -54,21 +54,11 @@ public abstract class TransactionUpdateBaseFragment extends Fragment {
         transactionNote = (EditText)view.findViewById(R.id.inputTransactionNote);
         accountSelectionSpinner = view.findViewById(R.id.accountSelectionSpinner);
 
-        // Setup and format date and time picker buttons.
-        // By default the transaction is given the current date and time.
+        // Setup format date and time formatting for buttons.
+        // By default the transaction is given the current date and time. Values are assigned below.
         formatViewDate = new SimpleDateFormat("dd/MM/yyyy");
-        formatStoreDate = new SimpleDateFormat("yyyy/MM/dd");
         formatTime = new SimpleDateFormat("HH:mm");
         transactionDate = Calendar.getInstance();
-        transactionYear = transactionDate.get(Calendar.YEAR);
-        transactionMonth = transactionDate.get(Calendar.MONTH);
-        transactionDay = transactionDate.get(Calendar.DAY_OF_MONTH);
-        transactionHour = transactionDate.get(Calendar.HOUR_OF_DAY);
-        transactionMinute = transactionDate.get(Calendar.MINUTE);
-        datePickerBtn.setText(formatViewDate.format(transactionDate.getTime()));
-        timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
-
-        // TODO: format date and time buttons with from DB.
 
         // Get the ID of the transaction from the Intent
         transactionID = getActivity().getIntent().getExtras().getInt("TransactionID");
@@ -77,6 +67,15 @@ public abstract class TransactionUpdateBaseFragment extends Fragment {
         Transaction tempTransaction = db.getTransaction(transactionID);
         transactionName.setText(tempTransaction.getName());
         transactionValue.setText(String.valueOf(tempTransaction.getValue()));
+        transactionDate.setTimeInMillis(tempTransaction.getDateTimeLong());
+        transactionYear = transactionDate.get(Calendar.YEAR);
+        transactionMonth = transactionDate.get(Calendar.MONTH);
+        transactionDay = transactionDate.get(Calendar.DAY_OF_MONTH);
+        transactionHour = transactionDate.get(Calendar.HOUR_OF_DAY);
+        transactionMinute = transactionDate.get(Calendar.MINUTE);
+        datePickerBtn.setText(formatViewDate.format(transactionDate.getTime()));
+        timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
+
 
         // Create a DB instance and get an ArrayList of all the Accounts from it.
         ArrayList<Account> allAccounts;

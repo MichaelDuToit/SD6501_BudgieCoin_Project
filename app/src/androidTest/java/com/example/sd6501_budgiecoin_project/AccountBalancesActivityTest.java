@@ -18,10 +18,13 @@ public class AccountBalancesActivityTest {
     @Rule
     public ActivityTestRule<AccountBalancesActivity> activityTestRule = new ActivityTestRule<>(AccountBalancesActivity.class);
     AccountBalancesActivity activity;
+    DBHandler db;
 
     @Before
     public void setUp() throws Exception {
         activity = activityTestRule.getActivity();
+        db = new DBHandler(activity.getApplicationContext());
+        db.createAccount(new Account("Account Balances Test"));
     }
 
     @After

@@ -25,8 +25,6 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
     private ArrayList<Transaction> transactions;
     private static LayoutInflater inflater = null;
 
-
-
     // Default Constructor (Required)
     public TransactionsAdapter(Activity activity, int textViewResourceID, ArrayList<Transaction> transactions){
         super(activity, textViewResourceID, transactions);
@@ -86,7 +84,8 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
             holder.transactionAccount.setText(
                     db.getAccount(transactions.get(position).getAccount()).getName()
             );
-            holder.transactionDate.setText(transactions.get(position).getDate());
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            holder.transactionDate.setText(dateFormatter.format(transactions.get(position).getDateTimeLong()));
         } catch (Exception ex){
             Log.e("BudgieCoin: ", "Exception Occurred: " + ex);
         }

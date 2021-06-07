@@ -39,8 +39,7 @@ public class TransactionUpdateIncomeFragment extends TransactionUpdateBaseFragme
                     transactionID,
                     transactionName.getText().toString(),
                     value,
-                    formatStoreDate.format(transactionDate.getTime()),
-                    timePickerBtn.getText().toString(),
+                    transactionDate,
                     selectedAccount,
                     transactionNote.getText().toString()
             );

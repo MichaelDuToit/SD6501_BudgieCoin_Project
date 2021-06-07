@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     // Fields for the activity
     EditText userInput, pinInput;
     TextView errorMsg;
-    User user = new User("admin", "4321");
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo biometricPromptInfo;
@@ -96,9 +95,10 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     errorMsg.setText(R.string.loginPinIncorrect);
                 }
-            } else {
-                errorMsg.setText(R.string.loginUsernameIncorrect);
             }
+            /*else {
+                errorMsg.setText(R.string.loginUsernameIncorrect);
+            }*/
             index++;
         }
     }

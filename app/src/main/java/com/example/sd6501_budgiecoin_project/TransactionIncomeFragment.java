@@ -33,8 +33,7 @@ public class TransactionIncomeFragment extends TransactionBaseFragment {
             Transaction tempTransaction = new Transaction(
                     transactionName.getText().toString(),
                     Double.parseDouble(transactionValue.getText().toString()),
-                    formatStoreDate.format(transactionDate.getTime()),
-                    timePickerBtn.getText().toString(),
+                    transactionDate,
                     selectedAccount,
                     transactionNote.getText().toString()
             );

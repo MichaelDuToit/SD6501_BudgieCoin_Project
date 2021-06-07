@@ -1,5 +1,8 @@
 package com.example.sd6501_budgiecoin_project;
 
+import android.util.Log;
+
+import java.util.Calendar;
 import java.util.Date;
 
 public class Transaction {
@@ -9,8 +12,7 @@ public class Transaction {
     private double value;
     private int account;
     private String note;
-    private String date;
-    private String time;
+    private Calendar datetime;
 
     // Constructors for the Class
     // Default Constructor - no params.
@@ -20,28 +22,25 @@ public class Transaction {
         this.value = 0.0;
         this.account = 0;
         this.note = null;
-        this.date  = null;
-        this.time = null;
+        this.datetime = null;
     }
     // Constructor that takes all fields except ID. Primary use for creating new transactions (DB assigns ID value)
-    public Transaction(String name, double value, String date, String time, int account, String note){
+    public Transaction(String name, double value, Calendar datetime, int account, String note){
         this.id = 0;
         this.name = name;
         this.value = value;
         this.account = account;
         this.note  = note;
-        this.date = date;
-        this.time = time;
+        this.datetime = datetime;
     }
     // Constructor that takes all fields. Primary use: holding transaction data from DB.
-    public Transaction(int id, String name, double value, String date, String time, int account, String note){
+    public Transaction(int id, String name, double value, Calendar datetime, int account, String note){
         this.id = id;
         this.name = name;
         this.value = value;
         this.account = account;
         this.note  = note;
-        this.date = date;
-        this.time = time;
+        this.datetime = datetime;
     }
 
     // Accessor and Mutator Methods for the Class
@@ -65,9 +64,23 @@ public class Transaction {
     }
     public void setNote(String note){this.note = note; }
     public String getNote(){return note; }
-    public void setDate(String date){this.date = date; }
-    public String getDate(){return date;}
-    public void setTime(String time){this.time = time;}
-    public String getTime(){return time; }
 
+    public Calendar getDateTime() {
+        return datetime;
+    }
+    public long getDateTimeLong(){
+        long temp = datetime.getTimeInMillis();
+        return temp;
+    }
+    public void setDateTimeLong(long datetime){
+        this.datetime.setTimeInMillis(datetime);
+    }
+    public void setDateTimeLong(String datetime){
+        long temp = Long.parseLong(datetime);
+        Log.i("BudgieCoin: ", "Long Parse" + temp);
+        this.datetime.setTimeInMillis(temp);
+    }
+    public void setDatetime(Calendar datetime){
+        this.datetime = datetime;
+    }
 }

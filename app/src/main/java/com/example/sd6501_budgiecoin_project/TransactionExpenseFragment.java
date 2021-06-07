@@ -35,8 +35,7 @@ public class TransactionExpenseFragment extends TransactionBaseFragment {
             Transaction tempTransaction = new Transaction(
                     transactionName.getText().toString(),
                     negativeValue,
-                    formatStoreDate.format(transactionDate.getTime()),
-                    timePickerBtn.getText().toString(),
+                    transactionDate,
                     selectedAccount,
                     transactionNote.getText().toString()
             );

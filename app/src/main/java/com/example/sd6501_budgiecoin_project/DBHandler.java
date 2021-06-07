@@ -61,7 +61,7 @@ public class DBHandler  extends SQLiteOpenHelper {
                 + KEY_TRANS_VALUE + " DOUBLE, "
                 + KEY_TRANS_ACC + " INTEGER, "
                 + KEY_TRANS_NOTE + " TEXT, "
-                + KEY_TRANS_DATE + " DATE, "
+                + KEY_TRANS_DATE + " INTEGER, "
                 + KEY_TRANS_TIME + " TEXT, "
                 + " FOREIGN KEY (" + KEY_TRANS_ACC + ") REFERENCES " + TABLE_ACCOUNTS + "(" + KEY_ACC_ID + ")"
                 + ")";
@@ -91,8 +91,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_TRANS_NAME, transaction.getName());
         values.put(KEY_TRANS_VALUE, transaction.getValue());
-        values.put(KEY_TRANS_DATE, transaction.getDate());
-        values.put(KEY_TRANS_TIME, transaction.getTime());
+        values.put(KEY_TRANS_DATE, transaction.getDateTimeLong());
         values.put(KEY_TRANS_ACC, String.valueOf(transaction.getAccount()));
         values.put(KEY_TRANS_NOTE, transaction.getNote());
         long newRowId = db.insert(TABLE_TRANSACTIONS, null, values);
@@ -111,8 +110,7 @@ public class DBHandler  extends SQLiteOpenHelper {
             transaction.setName(cursor.getString(cursor.getColumnIndex(KEY_TRANS_NAME)));
             transaction.setAccount(Integer.parseInt(cursor.getString(cursor.getColumnIndex(KEY_TRANS_ACC))));
             transaction.setValue(Double.parseDouble(cursor.getString(cursor.getColumnIndex(KEY_TRANS_VALUE))));
-            transaction.setDate(cursor.getString(cursor.getColumnIndex(KEY_TRANS_DATE)));
-            transaction.setTime(cursor.getString(cursor.getColumnIndex(KEY_TRANS_TIME)));
+            transaction.setDateTimeLong(Long.parseLong(cursor.getString(cursor.getColumnIndex(KEY_TRANS_DATE))));
             transaction.setNote(cursor.getString(cursor.getColumnIndex(KEY_TRANS_NOTE)));
             cursor.close();
         }
@@ -132,8 +130,7 @@ public class DBHandler  extends SQLiteOpenHelper {
             transaction.setName(cursor.getString(cursor.getColumnIndex(KEY_TRANS_NAME)));
             transaction.setAccount(Integer.parseInt(cursor.getString(cursor.getColumnIndex(KEY_TRANS_ACC))));
             transaction.setValue(Double.parseDouble(cursor.getString(cursor.getColumnIndex(KEY_TRANS_VALUE))));
-            transaction.setDate(cursor.getString(cursor.getColumnIndex(KEY_TRANS_DATE)));
-            transaction.setTime(cursor.getString(cursor.getColumnIndex(KEY_TRANS_TIME)));
+            transaction.setDateTimeLong(cursor.getString(cursor.getColumnIndex(KEY_TRANS_DATE)));
             transaction.setNote(cursor.getString(cursor.getColumnIndex(KEY_TRANS_NOTE)));
             allTransactions.add(transaction);
         }
@@ -157,8 +154,7 @@ public class DBHandler  extends SQLiteOpenHelper {
         contentValues.put(KEY_TRANS_NAME, transaction.getName());
         contentValues.put(KEY_TRANS_ACC, String.valueOf(transaction.getAccount()));
         contentValues.put(KEY_TRANS_VALUE, String.valueOf(transaction.getValue()));
-        contentValues.put(KEY_TRANS_DATE, transaction.getDate());
-        contentValues.put(KEY_TRANS_TIME, transaction.getTime());
+        contentValues.put(KEY_TRANS_DATE, transaction.getDateTimeLong());
         contentValues.put(KEY_TRANS_NOTE, transaction.getNote());
         db.update(TABLE_TRANSACTIONS, contentValues, KEY_TRANS_ID + " = ?", new String[]{String.valueOf(transaction.getId())});
     }

@@ -4,12 +4,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Calendar;
+
 import static org.junit.Assert.*;
 
 public class TransactionUnitTests {
     Transaction testTransaction;
     int expectedId, expectedAccount;
-    String expectedName, expectedNote, expectedDate, expectedTime;
+    String expectedName, expectedNote;
+    Calendar expectedDateTime;
     double expectedValue, DELTA;
 
     @Before
@@ -19,8 +22,7 @@ public class TransactionUnitTests {
         expectedName = "Test Transaction UT";
         expectedNote = "Unit Testing";
         expectedValue = 10.00;
-        expectedDate = "01/01/2020";
-        expectedTime = "10:00";
+        expectedDateTime = Calendar.getInstance();
         DELTA = 0.01;
     }
 
@@ -29,8 +31,7 @@ public class TransactionUnitTests {
         testTransaction = null;
         expectedName = null;
         expectedNote = null;
-        expectedDate = null;
-        expectedTime = null;
+        expectedDateTime = null;
     }
 
     // Unit Test the Transaction class' default constructor
@@ -42,32 +43,29 @@ public class TransactionUnitTests {
         assertEquals(0.0, testTransaction.getValue(), DELTA);
         assertEquals(0, testTransaction.getAccount());
         assertEquals(null, testTransaction.getNote());
-        assertEquals(null, testTransaction.getDate());
-        assertEquals(null, testTransaction.getTime());
+        assertEquals(null, testTransaction.getDateTime());
     }
     // Unit Test the Transaction class' constructor that takes all params except an ID.
     @Test
     public void transaction_allParamsExceptIdConstructor(){
-        testTransaction = new Transaction(expectedName, expectedValue, expectedDate, expectedTime, expectedAccount, expectedNote);
+        testTransaction = new Transaction(expectedName, expectedValue, expectedDateTime, expectedAccount, expectedNote);
         assertEquals(0, testTransaction.getId());
         assertEquals(expectedName, testTransaction.getName());
         assertEquals(expectedValue, testTransaction.getValue(), DELTA);
         assertEquals(expectedAccount, testTransaction.getAccount());
         assertEquals(expectedNote, testTransaction.getNote());
-        assertEquals(expectedDate, testTransaction.getDate());
-        assertEquals(expectedTime, testTransaction.getTime());
+        assertEquals(expectedDateTime, testTransaction.getDateTime());
     }
     // Unit Test the Transaction class' constructor that takes all params.
     @Test
     public void transaction_allParamsConstructor(){
-        testTransaction = new Transaction(expectedId, expectedName, expectedValue, expectedDate, expectedTime, expectedAccount, expectedNote);
+        testTransaction = new Transaction(expectedId, expectedName, expectedValue, expectedDateTime, expectedAccount, expectedNote);
         assertEquals(expectedId, testTransaction.getId());
         assertEquals(expectedName, testTransaction.getName());
         assertEquals(expectedValue, testTransaction.getValue(), DELTA);
         assertEquals(expectedAccount, testTransaction.getAccount());
         assertEquals(expectedNote, testTransaction.getNote());
-        assertEquals(expectedDate, testTransaction.getDate());
-        assertEquals(expectedTime, testTransaction.getTime());
+        assertEquals(expectedDateTime, testTransaction.getDateTime());
     }
 
     // Test all the Getter and Setter methods of the class
@@ -77,15 +75,13 @@ public class TransactionUnitTests {
         testTransaction.setId(expectedId);
         testTransaction.setName(expectedName);
         testTransaction.setValue(expectedValue);
-        testTransaction.setDate(expectedDate);
-        testTransaction.setTime(expectedTime);
+        testTransaction.setDatetime(expectedDateTime);
         testTransaction.setAccount(expectedAccount);
         testTransaction.setNote(expectedNote);
         assertEquals(expectedId, testTransaction.getId());
         assertEquals(expectedName, testTransaction.getName());
         assertEquals(expectedValue, testTransaction.getValue(), DELTA);
-        assertEquals(expectedDate, testTransaction.getDate());
-        assertEquals(expectedTime, testTransaction.getTime());
+        assertEquals(expectedDateTime, testTransaction.getDateTime());
         assertEquals(expectedAccount, testTransaction.getAccount());
         assertEquals(expectedNote, testTransaction.getNote());
     }

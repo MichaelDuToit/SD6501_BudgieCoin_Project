@@ -27,11 +27,12 @@ public class LoginActivityTest {
     User validUser;
     User invalidUser;
     // This is for creating a test user.
-    DBHandler db = new DBHandler(loginActivity.getApplicationContext());
+    DBHandler db;
 
     @Before
     public void setUp() throws Exception {
         loginActivity = activityTestRule.getActivity();
+        db = new DBHandler(loginActivity.getApplicationContext());
         validUser = new User("admin", "4321");
         db.createUser(validUser); // Create a user in the DB so testLoginValidLogin doesn't fail.
         invalidUser = new User("invalid", "9999");
@@ -40,6 +41,8 @@ public class LoginActivityTest {
     @After
     public void tearDown() throws Exception {
         loginActivity = null;
+        validUser = null;
+        invalidUser = null;
     }
 
     // Check that all expected view elements are present
