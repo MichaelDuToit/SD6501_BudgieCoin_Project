@@ -26,12 +26,14 @@ public class LoginActivityTest {
     Activity loginActivity;
     User validUser;
     User invalidUser;
-
+    // This is for creating a test user.
+    DBHandler db = new DBHandler(loginActivity.getApplicationContext());
 
     @Before
     public void setUp() throws Exception {
         loginActivity = activityTestRule.getActivity();
         validUser = new User("admin", "4321");
+        db.createUser(validUser);
         invalidUser = new User("invalid", "9999");
     }
 
