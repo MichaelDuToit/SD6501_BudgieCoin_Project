@@ -33,7 +33,7 @@ public class LoginActivityTest {
     public void setUp() throws Exception {
         loginActivity = activityTestRule.getActivity();
         validUser = new User("admin", "4321");
-        db.createUser(validUser);
+        db.createUser(validUser); // Create a user in the DB so testLoginValidLogin doesn't fail.
         invalidUser = new User("invalid", "9999");
     }
 
