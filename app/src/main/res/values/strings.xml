@@ -43,6 +43,7 @@
     <!-- Login Messages -->
     <string name="username">Username</string>
     <string name="pin">PIN</string>
+    <string name="loginUsernameEmpty">Username cannot be empty!</string>
     <string name="loginPinIncorrect">Incorrect Pin Number!</string>
     <string name="loginUsernameIncorrect">Incorrect Username!</string>
 

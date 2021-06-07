@@ -22,7 +22,7 @@ public class Transaction {
         this.value = 0.0;
         this.account = 0;
         this.note = null;
-        this.datetime = null;
+        this.datetime = Calendar.getInstance();
     }
     // Constructor that takes all fields except ID. Primary use for creating new transactions (DB assigns ID value)
     public Transaction(String name, double value, Calendar datetime, int account, String note){
@@ -73,11 +73,12 @@ public class Transaction {
         return temp;
     }
     public void setDateTimeLong(long datetime){
+        this.datetime = Calendar.getInstance();
         this.datetime.setTimeInMillis(datetime);
     }
     public void setDateTimeLong(String datetime){
         long temp = Long.parseLong(datetime);
-        Log.i("BudgieCoin: ", "Long Parse" + temp);
+        this.datetime = Calendar.getInstance();
         this.datetime.setTimeInMillis(temp);
     }
     public void setDatetime(Calendar datetime){

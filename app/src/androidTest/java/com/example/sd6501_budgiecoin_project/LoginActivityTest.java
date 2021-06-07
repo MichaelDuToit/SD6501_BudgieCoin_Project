@@ -64,7 +64,6 @@ public class LoginActivityTest {
         onView(withId(R.id.pinLoginBtn)).perform(click());
         onView(withId(R.id.loginError)).check(matches(isDisplayed()));
     }
-
     // Enter valid login and check that proceeds to the MainAcivity
     @Test
     public void testLoginValidLogin(){
@@ -72,6 +71,14 @@ public class LoginActivityTest {
         onView(withId(R.id.loginPin)).perform(typeText(validUser.getPinNumber()));
         onView(withId(R.id.pinLoginBtn)).perform(click());
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
+    }
+
+    // Enter valid pin but no username and check that error message is shown.
+    @Test
+    public void testEmptyUsernameLogin(){
+        onView(withId(R.id.loginPin)).perform(typeText(validUser.getPinNumber()));
+        onView(withId(R.id.pinLoginBtn)).perform(click());
+        onView(withId(R.id.loginError)).check(matches(isDisplayed()));
     }
 
     // Check that activity navigates to Register Activity on Register Btn click

@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -89,16 +90,20 @@ public class LoginActivity extends AppCompatActivity {
         int arrSize = allUsers.size();
         int index = 0;
         while(arrSize > index){
-            if(userInput.getText().toString().equals(allUsers.get(index).getUsername())){
-                if (pinInput.getText().toString().equals(allUsers.get(index).getPinNumber())){
-                    goToMainActivity();
-                } else {
-                    errorMsg.setText(R.string.loginPinIncorrect);
+            if(TextUtils.isEmpty(userInput.getText().toString())){
+                errorMsg.setText(R.string.loginUsernameEmpty);
+            } else {
+                if (userInput.getText().toString().equals(allUsers.get(index).getUsername())) {
+                    if (pinInput.getText().toString().equals(allUsers.get(index).getPinNumber())) {
+                        goToMainActivity();
+                    } else {
+                        errorMsg.setText(R.string.loginPinIncorrect);
+                    }
+                }
+                else {
+                    errorMsg.setText(R.string.loginUsernameIncorrect);
                 }
             }
-            /*else {
-                errorMsg.setText(R.string.loginUsernameIncorrect);
-            }*/
             index++;
         }
     }
