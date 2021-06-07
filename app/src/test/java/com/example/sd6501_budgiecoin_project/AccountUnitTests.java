@@ -52,6 +52,18 @@ public class AccountUnitTests {
         assertEquals(expectedAccountName, testAccount.getName());
         assertEquals(10.00, testAccount.getBalance(), DELTA);
     }
+    // Test all the getter and setter methods
+    @Test
+    public void account_testAllGetterSetterMethods(){
+        testAccount = new Account();
+        testAccount.setId(expectedAccountId);
+        testAccount.setName(expectedAccountName);
+        testAccount.setBalance(expectedAccountBalance);
+        assertEquals(expectedAccountId, testAccount.getId());
+        assertEquals(expectedAccountName, testAccount.getName());
+        assertEquals(expectedAccountBalance, testAccount.getBalance(), DELTA);
+    }
+
 
 
 }

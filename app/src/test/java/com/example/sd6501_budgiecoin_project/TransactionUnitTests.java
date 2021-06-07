@@ -69,4 +69,24 @@ public class TransactionUnitTests {
         assertEquals(expectedDate, testTransaction.getDate());
         assertEquals(expectedTime, testTransaction.getTime());
     }
+
+    // Test all the Getter and Setter methods of the class
+    @Test
+    public void transaction_testAllGetterSetterMethods(){
+        testTransaction = new Transaction();
+        testTransaction.setId(expectedId);
+        testTransaction.setName(expectedName);
+        testTransaction.setValue(expectedValue);
+        testTransaction.setDate(expectedDate);
+        testTransaction.setTime(expectedTime);
+        testTransaction.setAccount(expectedAccount);
+        testTransaction.setNote(expectedNote);
+        assertEquals(expectedId, testTransaction.getId());
+        assertEquals(expectedName, testTransaction.getName());
+        assertEquals(expectedValue, testTransaction.getValue(), DELTA);
+        assertEquals(expectedDate, testTransaction.getDate());
+        assertEquals(expectedTime, testTransaction.getTime());
+        assertEquals(expectedAccount, testTransaction.getAccount());
+        assertEquals(expectedNote, testTransaction.getNote());
+    }
 }

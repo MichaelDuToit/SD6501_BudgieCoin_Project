@@ -50,4 +50,16 @@ public class UserUnitTests {
         assertEquals(expectedName, testUser.getUsername());
         assertEquals(expectedPin, testUser.getPinNumber());
     }
+    //Test all the getter and setter methods
+    @Test
+    public void user_testAllGetterSetterMethods(){
+        testUser = new User();
+        testUser.setId(2);
+        testUser.setUsername(expectedName);
+        testUser.setPinNumber(expectedPin);
+        assertEquals(2, testUser.getId());
+        assertEquals(expectedName, testUser.getUsername());
+        assertEquals(expectedPin, testUser.getPinNumber());
+    }
+
 }
