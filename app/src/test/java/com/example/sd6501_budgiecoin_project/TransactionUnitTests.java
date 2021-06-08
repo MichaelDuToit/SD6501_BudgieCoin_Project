@@ -43,7 +43,7 @@ public class TransactionUnitTests {
         assertEquals(0.0, testTransaction.getValue(), DELTA);
         assertEquals(0, testTransaction.getAccount());
         assertEquals(null, testTransaction.getNote());
-        assertEquals(null, testTransaction.getDateTime());
+        assertEquals(Calendar.getInstance(), testTransaction.getDateTime());
     }
     // Unit Test the Transaction class' constructor that takes all params except an ID.
     @Test
