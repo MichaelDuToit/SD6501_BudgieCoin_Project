@@ -38,7 +38,10 @@
             android:layout_alignBottom="@id/accountBalanceActivity"
             android:src="@drawable/ic_add"
             android:contentDescription="@string/addAccountLbl"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            android:background="@color/budgieBlue"
+            android:backgroundTint="@color/budgieBlue"
+            />
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_height="match_parent"
