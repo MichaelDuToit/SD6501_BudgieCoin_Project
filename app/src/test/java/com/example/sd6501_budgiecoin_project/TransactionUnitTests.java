@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
 public class TransactionUnitTests {
     Transaction testTransaction;
     int expectedId, expectedAccount;
-    String expectedName, expectedNote;
+    String expectedName, expectedNote, expectedDateTimeLongString;
+    long expectedDateTimeLong;
     Calendar expectedDateTime;
     double expectedValue, DELTA;
 
@@ -23,6 +24,8 @@ public class TransactionUnitTests {
         expectedNote = "Unit Testing";
         expectedValue = 10.00;
         expectedDateTime = Calendar.getInstance();
+        expectedDateTimeLong = 1623139003;
+        expectedDateTimeLongString = "1623139003";
         DELTA = 0.01;
     }
 
@@ -75,14 +78,18 @@ public class TransactionUnitTests {
         testTransaction.setId(expectedId);
         testTransaction.setName(expectedName);
         testTransaction.setValue(expectedValue);
-        testTransaction.setDatetime(expectedDateTime);
         testTransaction.setAccount(expectedAccount);
         testTransaction.setNote(expectedNote);
         assertEquals(expectedId, testTransaction.getId());
         assertEquals(expectedName, testTransaction.getName());
         assertEquals(expectedValue, testTransaction.getValue(), DELTA);
-        assertEquals(expectedDateTime, testTransaction.getDateTime());
         assertEquals(expectedAccount, testTransaction.getAccount());
         assertEquals(expectedNote, testTransaction.getNote());
+        testTransaction.setDatetime(expectedDateTime);
+        assertEquals(expectedDateTime, testTransaction.getDateTime());
+        testTransaction.setDateTimeLong(expectedDateTimeLong);
+        assertEquals(expectedDateTimeLong, testTransaction.getDateTimeLong());
+        testTransaction.setDateTimeLong(expectedDateTimeLongString);
+        assertEquals(expectedDateTimeLong, testTransaction.getDateTimeLong());
     }
 }

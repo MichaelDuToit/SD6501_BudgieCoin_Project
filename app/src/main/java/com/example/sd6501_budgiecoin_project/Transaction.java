@@ -65,9 +65,13 @@ public class Transaction {
     public void setNote(String note){this.note = note; }
     public String getNote(){return note; }
 
+    public void setDatetime(Calendar datetime){
+        this.datetime = datetime;
+    }
     public Calendar getDateTime() {
         return datetime;
     }
+
     public long getDateTimeLong(){
         long temp = datetime.getTimeInMillis();
         return temp;
@@ -81,7 +85,5 @@ public class Transaction {
         this.datetime = Calendar.getInstance();
         this.datetime.setTimeInMillis(temp);
     }
-    public void setDatetime(Calendar datetime){
-        this.datetime = datetime;
-    }
+
 }
