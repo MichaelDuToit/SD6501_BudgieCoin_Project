@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -95,7 +98,14 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 if (userInput.getText().toString().equals(allUsers.get(index).getUsername())) {
                     if (pinInput.getText().toString().equals(allUsers.get(index).getPinNumber())) {
+                        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putInt("user-id", allUsers.get(index).getId());
+                        editor.putString("user-name", allUsers.get(index).getUsername());
+                        editor.putString("user-pin", allUsers.get(index).getPinNumber());
+                        editor.apply();
                         goToMainActivity();
+                        break;
                     } else {
                         errorMsg.setText(R.string.loginPinIncorrect);
                     }
