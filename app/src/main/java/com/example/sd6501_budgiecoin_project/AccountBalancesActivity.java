@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.lang.reflect.Array;
@@ -27,6 +28,7 @@ import java.util.HashMap;
 public class AccountBalancesActivity extends AppCompatNavigationDrawerActivity {
 
     ListView accountsList;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,15 @@ public class AccountBalancesActivity extends AppCompatNavigationDrawerActivity {
         ArrayList<Account> accounts = db.getAllAccounts();
         AccountsBalancesAdapter balancesAdapter = new AccountsBalancesAdapter(this, 0, accounts);
         accountsList.setAdapter(balancesAdapter);
+
+        // Setup the Floating Action Btn
+        floatingActionButton = findViewById(R.id.floatingActionBtn);
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddAccountActivity.class));
+            }
+        });
 
         // Set onClick listener on the list items. OnClick go to the View Account activity and
         // pass the selected account's ID to the activity.

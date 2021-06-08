@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
-    android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/viewTransactionsActivity"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".ViewTransactionsActivity"
-    xmlns:tools="http://schemas.android.com/tools"
     android:paddingTop="?attr/actionBarSize"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     >
-    <ListView
-        android:id="@+id/listAllTransactions"
+    <LinearLayout android:orientation="vertical"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewTransactionsActivity"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:context=".ViewTransactionsActivity"
+        xmlns:tools="http://schemas.android.com/tools"
+        >
+        <ListView
+            android:id="@+id/listAllTransactions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
-</LinearLayout>
+        android:layout_gravity="bottom"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/viewTransactionsActivity"
+        android:src="@drawable/ic_add"
+        android:contentDescription="@string/addAccountLbl"
+        android:layout_margin="16dp" />
+</RelativeLayout>

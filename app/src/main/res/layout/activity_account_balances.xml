@@ -9,22 +9,37 @@
     tools:context=".AccountBalancesActivity"
     tools:ignore="HardcodedText"
     >
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="start"
-        android:id="@+id/accountBalanceActivity"
         >
-        <include layout="@layout/app_bar" android:id="@+id/appBar" />
-
-        <ListView
-            android:id="@+id/accountsList"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="start"
+            android:id="@+id/accountBalanceActivity"
+            >
+            <include layout="@layout/app_bar" android:id="@+id/appBar" />
 
-    </LinearLayout>
+            <ListView
+                android:id="@+id/accountsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/accountBalanceActivity"
+            android:src="@drawable/ic_add"
+            android:contentDescription="@string/addAccountLbl"
+            android:layout_margin="16dp" />
+    </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_height="match_parent"
         android:layout_width="wrap_content"

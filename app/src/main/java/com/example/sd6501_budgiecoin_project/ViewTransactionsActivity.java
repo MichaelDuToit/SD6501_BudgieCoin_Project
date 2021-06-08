@@ -25,6 +25,7 @@ import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.lang.reflect.Array;
@@ -35,6 +36,7 @@ import java.util.Map;
 public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity {
 
     ListView lvAllTransactions;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,16 @@ public class ViewTransactionsActivity extends AppCompatNavigationDrawerActivity 
         navView.setCheckedItem(R.id.nav_transactions);
         getSupportActionBar().setTitle(R.string.transactions);
 
+        // Setup the Floating Action Button
+        floatingActionButton = findViewById(R.id.floatingActionBtn);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), TransactionActivity.class));
+            }
+        });
+
+        // Setup the List View to show all Transactions
         lvAllTransactions = findViewById(R.id.listAllTransactions);
         DBHandler db = new DBHandler(this);
         ArrayList<Transaction> transactions = db.getAllTransactions();
