@@ -20,8 +20,6 @@ public class ViewAccountActivityTest {
 
     @Rule
     public ActivityTestRule<ViewAccountActivity> activityActivityTestRule = new ActivityTestRule<>(ViewAccountActivity.class, false, false);
-    //ViewAccountActivity activity;
-
 
     @Before
     public void setUp() throws Exception {

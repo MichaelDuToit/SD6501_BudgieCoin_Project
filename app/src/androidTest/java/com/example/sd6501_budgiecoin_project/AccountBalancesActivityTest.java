@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -37,5 +38,13 @@ public class AccountBalancesActivityTest {
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.accountBalanceActivity)).check(matches(isDisplayed()));
         onView(withId(R.id.accountsList)).check(matches(isDisplayed()));
+    }
+
+    // ES20 - Check the Floating Action Button and test it.
+    @Test
+    public void testFloatingActionButton(){
+        onView(withId(R.id.floatingActionBtn)).check(matches(isDisplayed()));
+        onView(withId(R.id.floatingActionBtn)).perform(click());
+        onView(withId(R.id.addAccountActivity)).check(matches(isDisplayed()));
     }
 }
