@@ -32,7 +32,7 @@ public class MainActivityTest {
         mainActivity = null;
     }
 
-    // Check that all the view elements are present
+    // ES10 - Check that all the view elements are present
     @Test
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.btnViewTransactions)).check(matches(isDisplayed()));
@@ -40,14 +40,14 @@ public class MainActivityTest {
         onView(withId(R.id.btnViewAccounts)).check(matches(isDisplayed()));
     }
 
-    // Check that the Add Transaction Button performs and goes to Transaction Activity
+    // ES11 - Check that the Add Transaction Button performs and goes to Transaction Activity
     @Test
     public void testAddTransactionButton(){
         onView(withId(R.id.btnAddTransaction)).check(matches(isDisplayed()));
         onView(withId(R.id.btnAddTransaction)).perform(click());
         onView(withId(R.id.transactionActivity)).check(matches(isDisplayed()));
     }
-    // Check that the View Transaction Button performs and goes to the Transactions listing activity.
+    // ES12 - Check that the View Transaction Button performs and goes to the Transactions listing activity.
     @Test
     public void testViewTransactionsButton(){
         onView(withId(R.id.btnViewTransactions)).check(matches(isDisplayed()));
@@ -55,7 +55,7 @@ public class MainActivityTest {
         onView(withId(R.id.viewTransactionsActivity)).check(matches(isDisplayed()));
     }
 
-    // Check that the View Account Balances Button performs and goes to the Accounts listing activity.
+    // ES13 - Check that the View Account Balances Button performs and goes to the Accounts listing activity.
     @Test
     public void testViewAccountBalances(){
         onView(withId(R.id.btnViewAccounts)).check(matches(isDisplayed()));

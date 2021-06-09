@@ -36,7 +36,7 @@ public class RegistrationActivityTest {
         registrationActivity = null;
     }
 
-    // Check that all expected view elements are present
+    // ES14 - Check that all expected view elements are present
     @Test
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.registrationActivity)).check(matches(isDisplayed()));
@@ -46,7 +46,7 @@ public class RegistrationActivityTest {
         onView(withId(R.id.btnCancel)).check(matches(isDisplayed()));
     }
 
-    // Check that cancel btn navigates to correct activity
+    // ES15 - Check that cancel btn navigates to correct activity
     @Test
     public void testCancelButton(){
         onView(withId(R.id.et_username)).perform(typeText(testUserCancel.getUsername()));
@@ -55,7 +55,7 @@ public class RegistrationActivityTest {
         onView(withId(R.id.loginActivity)).check(matches(isDisplayed()));
     }
 
-    // Check that the registration button submits and navigates to Main Activity.
+    // ES16 - Check that the registration button submits and navigates to Main Activity.
     @Test
     public void testRegisterButton(){
         onView(withId(R.id.et_username)).perform(typeText(testUser.getUsername()));

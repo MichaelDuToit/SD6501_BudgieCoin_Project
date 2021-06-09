@@ -33,7 +33,7 @@ public class ViewTransactionsActivityTest {
         activity = null;
     }
 
-    // Check that all the view elements are present
+    // ES18 - Check that all the view elements are present
     @Test
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.viewTransactionsActivity)).check(matches(isDisplayed()));

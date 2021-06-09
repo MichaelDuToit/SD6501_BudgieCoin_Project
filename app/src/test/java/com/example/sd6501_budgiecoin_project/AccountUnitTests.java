@@ -28,7 +28,7 @@ public class AccountUnitTests {
         testAccount = null;
     }
 
-    // Test the Default Constructor
+    // UT01 - Test the Default Constructor
     @Test
     public void account_defaultConstructor(){
         testAccount = new Account();
@@ -36,7 +36,7 @@ public class AccountUnitTests {
         assertEquals(null, testAccount.getName());
         assertEquals(expectedAccountBalance, testAccount.getBalance(), DELTA);
     }
-    // Test the Name parameterized Constructor
+    // UT02 - Test the Name parameterized Constructor
     @Test
     public void account_nameConstructor(){
         testAccount = new Account("Test Account");
@@ -44,7 +44,7 @@ public class AccountUnitTests {
         assertEquals(expectedAccountId, testAccount.getId());
         assertEquals(expectedAccountBalance, testAccount.getBalance(), DELTA);
     }
-    // Test the all parameters Constructor
+    // UT03 - Test the all parameters Constructor
     @Test
     public void account_allParamsConstructor(){
         testAccount = new Account(1, "Test Account", 10.00);
@@ -52,7 +52,7 @@ public class AccountUnitTests {
         assertEquals(expectedAccountName, testAccount.getName());
         assertEquals(10.00, testAccount.getBalance(), DELTA);
     }
-    // Test all the getter and setter methods
+    // UT04 - Test all the getter and setter methods
     @Test
     public void account_testAllGetterSetterMethods(){
         testAccount = new Account();

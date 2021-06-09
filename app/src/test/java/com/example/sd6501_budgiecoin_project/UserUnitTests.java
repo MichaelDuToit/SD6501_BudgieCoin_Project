@@ -25,7 +25,7 @@ public class UserUnitTests {
         expectedPin = null;
     }
 
-    // Test the Default Constructor for User
+    // UT09 - Test the Default Constructor for User
     @Test
     public void user_testDefaultConstructor(){
         testUser = new User();
@@ -34,7 +34,7 @@ public class UserUnitTests {
         assertEquals(null, testUser.getPinNumber());
     }
 
-    // Test the Parameterized Constructor excluding ID for User
+    // UT10 - Test the Parameterized Constructor excluding ID for User
     @Test
     public void user_testExcludingIdConstructor(){
         testUser = new User(expectedName, expectedPin);
@@ -42,7 +42,7 @@ public class UserUnitTests {
         assertEquals(expectedName, testUser.getUsername());
         assertEquals(expectedPin, testUser.getPinNumber());
     }
-    // Test the all parameters Constructor for User
+    // UT11 - Test the all parameters Constructor for User
     @Test
     public void user_testAllParamsConstructor(){
         testUser = new User(expectedId, expectedName, expectedPin);
@@ -50,7 +50,7 @@ public class UserUnitTests {
         assertEquals(expectedName, testUser.getUsername());
         assertEquals(expectedPin, testUser.getPinNumber());
     }
-    //Test all the getter and setter methods
+    // UT12 - Test all the getter and setter methods
     @Test
     public void user_testAllGetterSetterMethods(){
         testUser = new User();

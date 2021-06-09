@@ -45,7 +45,7 @@ public class LoginActivityTest {
         invalidUser = null;
     }
 
-    // Check that all expected view elements are present
+    // ES05 - Check that all expected view elements are present
     @Test
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.loginActivity)).check(matches(isDisplayed()));
@@ -56,7 +56,7 @@ public class LoginActivityTest {
         onView(withId(R.id.biometricLoginBtn)).check(matches(isDisplayed()));
     }
 
-    // Enter invalid login and then check that error message is shown.
+    // ES06 - Enter invalid login and then check that error message is shown.
     @Test
     public void testLoginInvalidLogin(){
         onView(withId(R.id.loginUsername)).perform(typeText(invalidUser.getUsername()));
@@ -64,7 +64,7 @@ public class LoginActivityTest {
         onView(withId(R.id.pinLoginBtn)).perform(click());
         onView(withId(R.id.loginError)).check(matches(isDisplayed()));
     }
-    // Enter valid login and check that proceeds to the MainAcivity
+    // ES07 - Enter valid login and check that proceeds to the MainAcivity
     @Test
     public void testLoginValidLogin(){
         onView(withId(R.id.loginUsername)).perform(typeText(validUser.getUsername()));
@@ -73,7 +73,7 @@ public class LoginActivityTest {
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
     }
 
-    // Enter valid pin but no username and check that error message is shown.
+    // ES08 - Enter valid pin but no username and check that error message is shown.
     @Test
     public void testEmptyUsernameLogin(){
         onView(withId(R.id.loginPin)).perform(typeText(validUser.getPinNumber()));
@@ -81,7 +81,7 @@ public class LoginActivityTest {
         onView(withId(R.id.loginError)).check(matches(isDisplayed()));
     }
 
-    // Check that activity navigates to Register Activity on Register Btn click
+    // ES09 - Check that activity navigates to Register Activity on Register Btn click
     @Test
     public void testRegisterButton(){
         onView(withId(R.id.btnRegister)).check(matches(isDisplayed()));

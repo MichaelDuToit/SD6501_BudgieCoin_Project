@@ -39,7 +39,7 @@ public class ViewAccountActivityTest {
         activityActivityTestRule = null;
     }
 
-    // Check that all the view elements are present
+    // ES17 - Check that all the view elements are present
     @Test
     public void testViewElementsPresent(){
         onView(withId(R.id.accountName)).check(matches(isDisplayed()));

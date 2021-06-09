@@ -37,7 +37,7 @@ public class TransactionUnitTests {
         expectedDateTime = null;
     }
 
-    // Unit Test the Transaction class' default constructor
+    // UT05 - Unit Test the Transaction class' default constructor
     @Test
     public void transaction_defaultConstructor(){
         testTransaction = new Transaction();
@@ -48,7 +48,7 @@ public class TransactionUnitTests {
         assertEquals(null, testTransaction.getNote());
         assertEquals(Calendar.getInstance(), testTransaction.getDateTime());
     }
-    // Unit Test the Transaction class' constructor that takes all params except an ID.
+    // UT06 - Unit Test the Transaction class' constructor that takes all params except an ID.
     @Test
     public void transaction_allParamsExceptIdConstructor(){
         testTransaction = new Transaction(expectedName, expectedValue, expectedDateTime, expectedAccount, expectedNote);
@@ -59,7 +59,7 @@ public class TransactionUnitTests {
         assertEquals(expectedNote, testTransaction.getNote());
         assertEquals(expectedDateTime, testTransaction.getDateTime());
     }
-    // Unit Test the Transaction class' constructor that takes all params.
+    // UT07 - Unit Test the Transaction class' constructor that takes all params.
     @Test
     public void transaction_allParamsConstructor(){
         testTransaction = new Transaction(expectedId, expectedName, expectedValue, expectedDateTime, expectedAccount, expectedNote);
@@ -71,7 +71,7 @@ public class TransactionUnitTests {
         assertEquals(expectedDateTime, testTransaction.getDateTime());
     }
 
-    // Test all the Getter and Setter methods of the class
+    // UT08 - Test all the Getter and Setter methods of the class
     @Test
     public void transaction_testAllGetterSetterMethods(){
         testTransaction = new Transaction();

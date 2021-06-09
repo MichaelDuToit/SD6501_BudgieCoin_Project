@@ -32,7 +32,7 @@ public class AccountBalancesActivityTest {
         activity = null;
     }
 
-    // Check that all the view elements are present
+    // ES01 Check that all the view elements are present
     @Test
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.accountBalanceActivity)).check(matches(isDisplayed()));

@@ -35,7 +35,7 @@ public class AddAccountActivityTest {
         activity = null;
     }
 
-    // Check that all the view elements are present
+    // ES02 - Check that all the view elements are present
     @Test
     public void checkAllViewElementsPresent(){
         onView(withId(R.id.addAccountActivity)).check(matches(isDisplayed()));
@@ -44,6 +44,7 @@ public class AddAccountActivityTest {
         onView(withId(R.id.cancelAccountBtn)).check(matches(isDisplayed()));
     }
 
+    // ES03 - Create an Account and check that it has been created.
     @Test
     public void testAccountCreation(){
         onView(withId(R.id.accountName)).perform(typeText(testAccountInput));
@@ -53,6 +54,7 @@ public class AddAccountActivityTest {
         onView(withText(testAccountInput));
     }
 
+    // ES04 - Test the Cancel Button on the account.
     @Test
     public void testAccountCancellation(){
         onView(withId(R.id.cancelAccountBtn)).check(matches(isDisplayed()));
