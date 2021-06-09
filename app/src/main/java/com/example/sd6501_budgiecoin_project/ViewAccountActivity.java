@@ -37,7 +37,7 @@ public class ViewAccountActivity extends AppCompatActivity {
         actionBar = (Toolbar)findViewById(R.id.appBar);
         setSupportActionBar(actionBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.addTransactionLbl);
+        getSupportActionBar().setTitle(R.string.account);
 
         // DB connection and get the specified account
         DBHandler db = new DBHandler(this);
