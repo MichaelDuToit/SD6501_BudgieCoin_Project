@@ -133,7 +133,8 @@ public abstract class TransactionBaseFragment extends Fragment {
     TimePickerDialog.OnTimeSetListener timeSetCallback = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            transactionDate.set(transactionYear, transactionMonth, transactionDay, hourOfDay, minute);
+            transactionDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            transactionDate.set(Calendar.MINUTE, minute);
             timePickerBtn.setText(formatTime.format(transactionDate.getTime()));
         }
     };
