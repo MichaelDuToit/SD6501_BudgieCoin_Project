@@ -21,6 +21,8 @@
     <string name="msg_deleteTransaction">Are you sure you want to delete this Transaction?</string>
     <string name="lbl_registration">Register</string>
     <string name="title_activity_settings">Settings Activity</string>
+    <string name="lbl_deleteUser">Delete User</string>
+    <string name="msg_deleteUser">Are you sure you want to delete this User?</string>
 
     <string name="timePickerSelection">00:00</string>
     <string name="datePickerSelection">00/00/0000</string>
@@ -39,6 +41,7 @@
     <string name="expense">Expense</string>
     <string name="transfer">Transfer</string>
     <string name="registerBtn">Register</string>
+    <string name="deleteUserSummary">Permanently delete the user that is logged in.</string>
 
     <!-- Login Messages -->
     <string name="username">Username</string>

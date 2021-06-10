@@ -1,5 +1,7 @@
 package com.example.sd6501_budgiecoin_project;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,6 +14,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.preference.EditTextPreference;
@@ -50,31 +53,18 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.Settings);
 
-        // Testing. Considering implementing a location selection which sets the currency values.
-        /*
-        String[] locales = Locale.getISOCountries();
-        ArrayList<String> countries = new ArrayList<String>();
-        for(String l : locales){
-            Locale obj = new Locale("", l);
-            countries.add(obj.getDisplayCountry());
-        }
-        for(String c : countries) {
-            Log.i("BudgieCoin", c);
-        }
-        */
-        // Store locales to array.
-        // Populate spinner with displayCountry
-        // when user picks an option set the locale to user preferences.
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
         SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
+
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
             EditTextPreference usernamePreference = findPreference("user-name");
             EditTextPreference pinPreference = findPreference("user-pin");
+            Preference deleteButton = findPreference("user-id");
 
             // Set the Summary field of the EditTextPreferences to the current logged in user's values.
             if(usernamePreference != null){
@@ -164,6 +154,29 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             });
 
+            deleteButton.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    DBHandler db = new DBHandler(getContext());
+                    AlertDialog confirmationDialog = new AlertDialog.Builder(getContext())
+                            .setTitle(R.string.lbl_deleteAccount)
+                            .setMessage(R.string.msg_deleteUser)
+                            .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                                    Log.i("BudgieCoin: ", String.valueOf(sharedPreferences.getInt("user-id", -1)) );
+                                    db.deleteUser(sharedPreferences.getInt("user-id", -1));
+                                    sharedPreferences.edit().putInt("user-id", -1);
+                                    sharedPreferences.edit().putString("user-name", null);
+                                    sharedPreferences.edit().putString("user-pin", null);
+                                    startActivity(new Intent(getContext(), LoginActivity.class));
+                                }
+                            })
+                            .setNegativeButton(R.string.no, null).show();
+                    return true;
+                }
+            });
 
             // Set the Change listeners on the Preference fields so that the DB is updated when the values are changed.
             preferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {

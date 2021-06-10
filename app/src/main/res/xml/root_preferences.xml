@@ -12,5 +12,13 @@
             android:inputType="number"
             />
     </PreferenceCategory>
+    <PreferenceCategory app:title="@string/lbl_deleteUser">
+        <Preference
+            app:title="@string/lbl_deleteUser"
+            android:key="user-id"
+            android:summary="Permanently delete the user that is logged in."
+            />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
