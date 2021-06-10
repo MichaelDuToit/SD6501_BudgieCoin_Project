@@ -108,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         errorMsg.setText(R.string.loginPinIncorrect);
                     }
+                    return;
                 }
                 else {
                     errorMsg.setText(R.string.loginUsernameIncorrect);
