@@ -105,13 +105,15 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("user-pin", allUsers.get(index).getPinNumber());
                         editor.apply();
                         goToMainActivity();
-                        break;
+                        return;
                     } else {
                         errorMsg.setText(R.string.loginPinIncorrect);
+                        return;
                     }
                 }
                 else {
                     errorMsg.setText(R.string.loginUsernameIncorrect);
+                    return;
                 }
             }
             index++;
