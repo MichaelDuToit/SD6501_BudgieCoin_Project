@@ -33,6 +33,7 @@ public class SettingsActivityTest {
     public void testAllViewElementsDisplayed(){
         onView(withText("Username")).check(matches(isDisplayed()));
         onView(withText("PIN")).check(matches(isDisplayed()));
+        onView(withText("Delete User")).check(matches(isDisplayed()));
     }
 
 }
